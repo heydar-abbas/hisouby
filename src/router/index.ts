@@ -23,9 +23,18 @@ const router = createRouter({
 			},
 		},
 		{
-			path: "/auth/login",
-			name: "login",
-			component: () => import("../views/auth/Login.vue"),
+			path: "/profile/edit",
+			name: "profile-edit",
+			component: () => import("../views/profile/EditView.vue"),
+			meta: {
+				title: "تعديل الملف الشخصي",
+				requireAuth: true,
+			},
+		},
+		{
+			path: "/auth/signin",
+			name: "signin",
+			component: () => import("../views/auth/SignIn.vue"),
 			meta: {
 				title: "تسجيل الدخول",
 			},
@@ -58,7 +67,7 @@ router.beforeEach(async (to, from, next) => {
 		if (await getCurrentUser()) {
 			next();
 		} else {
-			next("/auth/login");
+			next("/auth/signin");
 		}
 	} else {
 		next();

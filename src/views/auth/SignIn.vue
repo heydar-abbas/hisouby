@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.vue";
 import { useAuthStore } from "@/stores/authStore";
 import { storeToRefs } from "pinia";
 import { onUnmounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const authStore = useAuthStore();
 const { errMsg } = storeToRefs(authStore);
@@ -52,7 +53,7 @@ onUnmounted(() => {
                   type="email"
                   name="email"
                   id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="name@company.com"
                 />
               </div>
@@ -76,19 +77,19 @@ onUnmounted(() => {
               <!-- Show error message -->
               <p
                 v-if="errMsg"
-                class="text-red-600 text-sm font-semibold text-center"
+                class="text-red-600 text-sm font-semibold"
               >
                 {{ errMsg }}
               </p>
 
-              <div class="flex items-center justify-between">
+              <!-- <div>
                 <a
                   href="#"
                   class="text-sm font-medium text-blue-600 hover:underline"
                 >
                   نسيت كلمة المرور؟
                 </a>
-              </div>
+              </div> -->
 
               <button
                 type="submit"
@@ -97,7 +98,8 @@ onUnmounted(() => {
                 تسجيل دخول
               </button>
             </form>
-            <div class="text-gray-500 text-center">او</div>
+
+            <!-- Signin-up with google -->
             <div class="w-full">
               <button
                 class="bg-gray-200 rounded-lg text-sm px-5 py-2.5 flex justify-evenly items-center hover:bg-gray-300 w-full cursor-pointer"
