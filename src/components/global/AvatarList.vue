@@ -2,10 +2,8 @@
 import AvatarListItem from "./AvatarListItem.vue";
 import { reactive } from "vue";
 import { useUserStore } from "@/stores/userStore";
-import { storeToRefs } from "pinia";
 
 const userStore = useUserStore();
-const { avatarListDropDown } = storeToRefs(userStore);
 const avatars = reactive<string[]>([
   "penguin.png",
   "bullfinch.png",
@@ -28,8 +26,8 @@ const avatars = reactive<string[]>([
       :key="index"
       :avatar="avatar"
       @click="
-        $emit('sendAvatarName', avatar),
-          (avatarListDropDown = !avatarListDropDown)
+        $emit('passAvatar', avatar),
+          (userStore.avatarListDropDown = !userStore.avatarListDropDown)
       "
     />
   </ul>

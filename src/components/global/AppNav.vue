@@ -10,7 +10,7 @@ const authStore = useAuthStore();
 const { isLoggedIn } = storeToRefs(authStore);
 
 const userStore = useUserStore();
-const { userInfo,  localUserInfo } = storeToRefs(userStore);
+const { userInfo } = storeToRefs(userStore);
 
 const isUserMenuOpen = ref(false);
 
@@ -59,11 +59,11 @@ function signOut() {
           <div class="px-4 py-3">
             <span class="block text-sm text-gray-100">
               {{
-                localUserInfo?.displayName || localUserInfo?.email?.split("@")[0]
+                userInfo?.name || userInfo?.email?.split("@")[0]
               }}
             </span>
             <span class="block text-sm truncate text-gray-400">
-              {{ localUserInfo?.email }}
+              {{ userInfo?.email }}
             </span>
           </div>
           <ul class="py-2">

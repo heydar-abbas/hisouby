@@ -1,66 +1,51 @@
 <script setup lang="ts">
+import ClassSection from "@/components/global/ClassSection.vue";
+import ClassLink from "@/components/UI/ClassLink.vue";
 import BaseLayout from "@/layouts/BaseLayout.vue";
-import { RouterLink } from "vue-router";
+import { ref } from "vue";
+
+const elementarySchool = ref<boolean>(false);
+const middleSchool = ref<boolean>(false);
+const highSchool = ref<boolean>(false);
 </script>
 
 <template>
-	<BaseLayout>
-		<div class="w-full h-screen flex flex-col py-8">
-			Home page
-			<!-- <details class="bg-[#eee] w-80 p-3 mx-auto my-3 rounded-4xl">
-				<summary class="cursor-pointer text-center text-xl">الابتدائية</summary>
-				<ul>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class1">الصف الأول</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class2">الصف الثاني</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="class3">الصف الثالث</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class4">الصف الرابع</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class5">الصف الخامس</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class6">الصف السادس</RouterLink>
-					</li>
-				</ul>
-			</details>
+  <BaseLayout>
+    <div
+      class="w-full md:w-2xl lg:w-4xl xl:w-6xl flex flex-wrap items-start gap-4 mx-auto px-4 py-8 md:px-0"
+    >
+      <ClassSection
+        @click="elementarySchool = !elementarySchool"
+        :isOpen="elementarySchool"
+        title="الابتدائية"
+      >
+        <ClassLink to="/class/one" title="الصف الاول" />
+        <ClassLink to="/class/two" title="الصف الثاني" />
+        <ClassLink to="/class/three" title="الصف الثالث" />
+        <ClassLink to="/class/four" title="الصف الرابع" />
+        <ClassLink to="/class/five" title="الصف الخامس" />
+        <ClassLink to="/class/six" title="الصف السادس" />
+      </ClassSection>
 
-			<details class="bg-[#eee] w-80 p-3 mx-auto my-3 rounded-4xl">
-				<summary class="cursor-pointer text-center text-xl">المتوسطة</summary>
-				<ul>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class7">الصف الاول</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class8">الصف الثاني</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class9">الصف الثالث</RouterLink>
-					</li>
-				</ul>
-			</details>
+      <ClassSection
+        @click="middleSchool = !middleSchool"
+        :isOpen="middleSchool"
+        title="المتوسطة"
+      >
+        <ClassLink to="/class/seven" title="الصف الاول" />
+        <ClassLink to="/class/eight" title="الصف الثاني" />
+        <ClassLink to="/class/nine" title="الصف الثالث" />
+      </ClassSection>
 
-			<details class="bg-[#eee] w-80 p-3 mx-auto my-3 rounded-4xl">
-				<summary class="cursor-pointer text-center text-xl">الاعدادية</summary>
-				<ul>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class10">الرابع</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class11">الخامس</RouterLink>
-					</li>
-					<li class="py-2 cursor-pointer hover:underline">
-						<RouterLink to="/class12">السادس</RouterLink>
-					</li>
-				</ul>
-			</details> -->
-
-		</div>
-	</BaseLayout>
+      <ClassSection
+        @click="highSchool = !highSchool"
+        :isOpen="highSchool"
+        title="الاعدادية"
+      >
+        <ClassLink to="/class/ten" title="الرابع" />
+        <ClassLink to="/class/eleven" title="الخامس" />
+        <ClassLink to="/class/twelve" title="السادس" />
+      </ClassSection>
+    </div>
+  </BaseLayout>
 </template>

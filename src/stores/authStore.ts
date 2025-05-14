@@ -11,10 +11,12 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { defineStore } from "pinia";
 import { db } from "@/firebase";
+import { useUserStore } from "./userStore";
 
 export const useAuthStore = defineStore("authStore", () => {
   const router = useRouter();
   const auth = getAuth();
+  const userStore = useUserStore();
 
   const isLoggedIn = ref<boolean>(false);
   const errMsg = ref<string | null>("");
@@ -116,6 +118,7 @@ export const useAuthStore = defineStore("authStore", () => {
     signOut(getAuth()).then(() => {
       isLoggedIn.value = false;
       errMsg.value = "";
+      userStore.userInfo = null;
       router.push("/");
     });
   }

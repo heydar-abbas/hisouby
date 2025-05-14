@@ -10,19 +10,19 @@ import { db } from "./firebase";
 
 const authStore = useAuthStore();
 const { isLoggedIn } = storeToRefs(authStore);
+
 const userStore = useUserStore();
-const { userInfo, localUserInfo } = storeToRefs(userStore);
+const { userInfo } = storeToRefs(userStore);
 
 onMounted(() => {
   onAuthStateChanged(getAuth(), (user) => {
     if (user) {
-      localUserInfo.value = user;
       isLoggedIn.value = true;
 
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          if (userInfo.value === null) {
+          if (!userInfo.value) {
             userInfo.value = doc.data();
           }
         });
