@@ -4,6 +4,7 @@ import { reactive } from "vue";
 import { useUserStore } from "@/stores/userStore";
 
 const userStore = useUserStore();
+
 const avatars = reactive<string[]>([
   "penguin.png",
   "bullfinch.png",

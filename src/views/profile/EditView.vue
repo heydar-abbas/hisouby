@@ -7,11 +7,11 @@ import TextInput from "@/components/UI/TextInput.vue";
 import BaseLayout from "@/layouts/BaseLayout.vue";
 import { useUserStore } from "@/stores/userStore";
 import { storeToRefs } from "pinia";
-import { onUnmounted, reactive, ref, watchEffect } from "vue";
+import { onUnmounted, reactive, watchEffect } from "vue";
 
 const userStore = useUserStore();
-const { userInfo } = storeToRefs(userStore);
-const avatarListDropDown = ref<boolean>(false);
+const { userInfo, avatarListDropDown } = storeToRefs(userStore);
+
 const form = reactive({
   name: "",
   avatar: "",
@@ -36,8 +36,11 @@ onUnmounted(() => {
 
 <template>
   <BaseLayout>
-    <div class="h-screen w-full px-4 py-4 md:w-2xl">
-      <form @submit.prevent="userStore.updateUser(form)">
+    <div class="w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto p-4 md:p-0">
+      <form
+        @submit.prevent="userStore.updateUser(form)"
+        class="w-full mx-auto md:w-80"
+      >
         <div class="relative flex flex-col items-center py-4">
           <ImageInput
             @click="avatarListDropDown = !avatarListDropDown"
@@ -46,16 +49,11 @@ onUnmounted(() => {
           />
           <!-- List of avatars -->
           <AvatarList
-            :class="
-              avatarListDropDown
-                ? 'transform rotate-y-0'
-                : 'transform rotate-y-90'
-            "
+            :class="avatarListDropDown ? 'rotate-y-0' : 'rotate-y-90'"
             @passAvatar="changeAvatar($event)"
           />
         </div>
 
-        <!-- User name -->
         <div>
           <TextInput
             type="text"

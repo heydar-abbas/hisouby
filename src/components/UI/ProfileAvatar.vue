@@ -5,9 +5,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col items-center py-4">
+  <div class="flex justify-center py-4 ">
   <img
-    class="rounded-full border-2 border-slate-300 mb-1 p-2 w-20"
+    class="rounded-4xl p-2 w-24 bg-gray-300"
     :src="avatarSrc || '/no-image.png'"
     alt="User Avatar"
   />

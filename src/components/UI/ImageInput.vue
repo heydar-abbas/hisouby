@@ -10,18 +10,18 @@ defineProps<{
 <template>
   <label
     for="image"
-    class="w-32 h-32 p-2 relative rounded-full border-2 border-gray-300"
+    class="w-32 h-32 p-2 relative rounded-4xl"
   >
     <span
-      class="absolute top-0 left-0 flex items-center justify-center z-10 bg-gray-900 opacity-30 hover:opacity-35 w-full h-full rounded-full cursor-pointer"
+      class="absolute top-0 left-0 flex items-center justify-center z-10 bg-[rgb(0,0,0,0.3)] hover:bg-[rgb(0,0,0,0.2)] w-full h-full rounded-4xl cursor-pointer"
     >
-      <CameraIcon class="w-10 text-white" />
+      <CameraIcon class="w-10 text-gray-50" />
     </span>
 
     <img
       :src="src || '/no-image.png'"
       :alt="alt"
-      class="w-28 rounded-full bg-gray-50"
+      class="w-full rounded-4xl"
     />
   </label>
 </template>

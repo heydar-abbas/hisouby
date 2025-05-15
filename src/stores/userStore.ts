@@ -20,6 +20,7 @@ export const useUserStore = defineStore(
 
     const userInfo = ref<any>(null);
     const successMsg = ref<string | null>("");
+    const avatarListDropDown = ref<boolean>(false);
 
     /**
      * Method for updating user information
@@ -47,7 +48,7 @@ export const useUserStore = defineStore(
       router.push("/profile");
     }
 
-    return { userInfo, successMsg, updateUser };
+    return { userInfo, successMsg, avatarListDropDown, updateUser };
   },
   { persist: true }
 );

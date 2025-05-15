@@ -2,10 +2,8 @@
 import GradsCard from "@/components/global/GradsCard.vue";
 import UserInfo from "@/components/global/UserInfo.vue";
 import ClassList from "@/components/UI/ClassList.vue";
-import EditProfileBtn from "@/components/UI/EditProfileBtn.vue";
 import LevelCounter from "@/components/UI/LevelCounter.vue";
 import LevelProgressBar from "@/components/UI/LevelProgressBar.vue";
-import ProfileAvatar from "@/components/UI/ProfileAvatar.vue";
 import SuccessMsg from "@/components/UI/SuccessMsg.vue";
 import BaseLayout from "@/layouts/BaseLayout.vue";
 import { useUserStore } from "@/stores/userStore";
@@ -17,14 +15,12 @@ const { userInfo, successMsg } = storeToRefs(userStore);
 
 <template>
   <BaseLayout>
-    <div class="w-full p-4 md:w-2xl lg:w-4xl xl:w-6xl mx-auto md:px-0">
+    <div class="w-full p-4 md:w-2xl lg:w-4xl xl:w-6xl mx-auto md:p-0">
       <!-- Notification -->
       <SuccessMsg v-show="successMsg" :msg="successMsg" />
+      
       <!-- User info -->
-      <UserInfo :name="userInfo?.name">
-        <ProfileAvatar :avatarSrc="userInfo?.avatar" />
-        <EditProfileBtn />
-      </UserInfo>
+      <UserInfo :userInfo="userInfo" />
 
       <!-- User achievements -->
       <div class="py-6">
