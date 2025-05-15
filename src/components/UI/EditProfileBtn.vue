@@ -3,12 +3,10 @@ import { RouterLink } from "vue-router";
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <RouterLink
-      to="/profile/edit"
-      class="bg-slate-200 rounded-md py-2 px-4 text-xs"
-    >
-      تعديل الملف الشخصي
-    </RouterLink>
-  </div>
+  <RouterLink
+    to="/profile/edit"
+    class="bg-slate-200 text-gray-900 font-semibold text-center text-sm py-3 px-6 rounded-md"
+  >
+    تعديل الملف الشخصي
+  </RouterLink>
 </template>

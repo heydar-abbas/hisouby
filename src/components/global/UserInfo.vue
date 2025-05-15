@@ -8,13 +8,15 @@ defineProps<{
 </script>
 
 <template>
-  <div class="border-b-gray-300 border-b-2 py-4">
+  <div class="border-b-gray-300 border-b-2 py-4 lg:flex lg:justify-evenly">
     <ProfileAvatar :avatarSrc="userInfo?.avatar" />
 
-    <h2 class="text-center font-semibold mb-4">
-      {{ userInfo?.name || "Your name" }}
-    </h2>
-    
-    <EditProfileBtn />
+    <div class="flex-2/3 flex flex-col items-center justify-center">
+      <h2 class="text-center text-gray-900 font-semibold mb-4">
+        {{ userInfo?.name || "بلا اسم" }}
+      </h2>
+      
+      <EditProfileBtn />
+    </div>
   </div>
 </template>

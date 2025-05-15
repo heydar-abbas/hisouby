@@ -51,18 +51,18 @@ const { userInfo, successMsg } = storeToRefs(userStore);
 
         <!-- Grads -->
         <GradsCard>
-          <ClassList badgeImage="/no-image.png" title="الاول ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="الثاني ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="الثالث ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="الرابع ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="الخامس ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="السادس ابتدائية" />
-          <ClassList badgeImage="/no-image.png" title="الاول متوسطة" />
-          <ClassList badgeImage="/no-image.png" title="الثاني متوسطة" />
-          <ClassList badgeImage="/no-image.png" title="الثالث متوسطة" />
-          <ClassList badgeImage="/no-image.png" title="الرابع اعدادي" />
-          <ClassList badgeImage="/no-image.png" title="الخامس اعدادي" />
-          <ClassList badgeImage="/no-image.png" title="السادس اعدادي" />
+          <ClassList badgeImage="" title="الاول ابتدائية" />
+          <ClassList badgeImage="" title="الثاني ابتدائية" />
+          <ClassList badgeImage="" title="الثالث ابتدائية" />
+          <ClassList badgeImage="" title="الرابع ابتدائية" />
+          <ClassList badgeImage="" title="الخامس ابتدائية" />
+          <ClassList badgeImage="" title="السادس ابتدائية" />
+          <ClassList badgeImage="" title="الاول متوسطة" />
+          <ClassList badgeImage="" title="الثاني متوسطة" />
+          <ClassList badgeImage="" title="الثالث متوسطة" />
+          <ClassList badgeImage="" title="الرابع اعدادي" />
+          <ClassList badgeImage="" title="الخامس اعدادي" />
+          <ClassList badgeImage="" title="السادس اعدادي" />
         </GradsCard>
       </div>
     </div>
