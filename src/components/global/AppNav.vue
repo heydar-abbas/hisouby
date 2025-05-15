@@ -43,17 +43,17 @@ function signOut() {
         <button
           type="button"
           @click="isUserMenuOpen = !isUserMenuOpen"
-          class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-600 cursor-pointer"
+          class="flex text-sm focus:ring-4 focus:ring-gray-600 rounded-lg cursor-pointer"
         >
           <img
-            class="w-8 h-8 rounded-full object-cover"
+            class="w-8 h-8"
             :src="userInfo?.avatar || '/no-image.png'"
             alt="user photo"
           />
         </button>
         <!-- Dropdown menu -->
         <div
-          class="absolute top-6 left-0 z-50 w-52 my-4 text-base list-none divide-y rounded-lg shadow-sm bg-gray-700 divide-gray-600"
+          class="absolute top-6 left-0 z-50 w-72 my-4 text-base list-none divide-y rounded-lg shadow-sm bg-gray-700 divide-gray-600"
           :class="{ hidden: !isUserMenuOpen }"
         >
           <div class="px-4 py-3">
