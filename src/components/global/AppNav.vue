@@ -47,7 +47,7 @@ function signOut() {
         >
           <img
             class="w-8 h-8"
-            :src="userInfo?.avatar || '/no-image.png'"
+            :src="userInfo?.avatar || '/images/no-image.png'"
             alt="user photo"
           />
         </button>

@@ -19,7 +19,7 @@ defineProps<{
     </span>
 
     <img
-      :src="src || '/no-image.png'"
+      :src="src || '/images/no-image.png'"
       :alt="alt"
       class="w-full rounded-4xl"
     />

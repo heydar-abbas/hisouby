@@ -9,7 +9,7 @@ defineProps<{
   <li class="basis-17 p-2 text-xs bg-gray-200 rounded-md">
     <figure>
       <img
-        :src="badgeImage || '/blank-img.webp'"
+        :src="badgeImage || '/images/blank-img.webp'"
         alt="class badge"
         class="mb-2 w-full rounded-full"
       />
