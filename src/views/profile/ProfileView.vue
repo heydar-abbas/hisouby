@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import GradsCard from "@/components/global/GradsCard.vue";
+import ProfileGradesCard from "@/components/global/ProfileGradesCard.vue";
 import UserInfo from "@/components/global/UserInfo.vue";
-import ClassList from "@/components/UI/ClassList.vue";
+import ProfileGradeList from "@/components/UI/ProfileGradeList.vue";
 import LevelCounter from "@/components/UI/LevelCounter.vue";
 import LevelProgressBar from "@/components/UI/LevelProgressBar.vue";
 import SuccessMsg from "@/components/UI/SuccessMsg.vue";
@@ -50,20 +50,20 @@ const { userInfo, successMsg } = storeToRefs(userStore);
         </div>
 
         <!-- Grads -->
-        <GradsCard>
-          <ClassList badgeImage="" title="الاول ابتدائية" />
-          <ClassList badgeImage="" title="الثاني ابتدائية" />
-          <ClassList badgeImage="" title="الثالث ابتدائية" />
-          <ClassList badgeImage="" title="الرابع ابتدائية" />
-          <ClassList badgeImage="" title="الخامس ابتدائية" />
-          <ClassList badgeImage="" title="السادس ابتدائية" />
-          <ClassList badgeImage="" title="الاول متوسطة" />
-          <ClassList badgeImage="" title="الثاني متوسطة" />
-          <ClassList badgeImage="" title="الثالث متوسطة" />
-          <ClassList badgeImage="" title="الرابع اعدادي" />
-          <ClassList badgeImage="" title="الخامس اعدادي" />
-          <ClassList badgeImage="" title="السادس اعدادي" />
-        </GradsCard>
+        <ProfileGradesCard>
+          <ProfileGradeList badgeImage="" title="الاول ابتدائية" />
+          <ProfileGradeList badgeImage="" title="الثاني ابتدائية" />
+          <ProfileGradeList badgeImage="" title="الثالث ابتدائية" />
+          <ProfileGradeList badgeImage="" title="الرابع ابتدائية" />
+          <ProfileGradeList badgeImage="" title="الخامس ابتدائية" />
+          <ProfileGradeList badgeImage="" title="السادس ابتدائية" />
+          <ProfileGradeList badgeImage="" title="الاول متوسطة" />
+          <ProfileGradeList badgeImage="" title="الثاني متوسطة" />
+          <ProfileGradeList badgeImage="" title="الثالث متوسطة" />
+          <ProfileGradeList badgeImage="" title="الرابع اعدادي" />
+          <ProfileGradeList badgeImage="" title="الخامس اعدادي" />
+          <ProfileGradeList badgeImage="" title="السادس اعدادي" />
+        </ProfileGradesCard>
       </div>
     </div>
   </BaseLayout>

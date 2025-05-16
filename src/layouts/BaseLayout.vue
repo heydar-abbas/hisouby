@@ -10,7 +10,7 @@ import AppNav from '@/components/global/AppNav.vue';
       <AppNav />
     </header>
 
-    <main class="min-h-screen bg-gray-100">
+    <main class="min-h-screen bg-gray-50">
       <slot></slot>
     </main>
 

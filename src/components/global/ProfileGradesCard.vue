@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="py-4">
     <div class="text-center p-3 border border-gray-400 rounded-t-md">
