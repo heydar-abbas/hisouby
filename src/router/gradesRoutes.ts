@@ -2,7 +2,7 @@ export const gradesRoutes = [
   {
     path: "/grade/1",
     name: "first-grade",
-    component: () => import("../views/grade/_1stGrade.vue"),
+    component: () => import("../views/grade/_1stGrade/index.vue"),
     meta: {
       title: "الاول الابتدائية",
     },
