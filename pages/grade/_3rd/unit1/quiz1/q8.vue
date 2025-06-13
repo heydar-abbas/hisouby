@@ -13,79 +13,53 @@
 			<section class="w-full h-screen mt-6">
 				<div class="w-full px-4 md:px-0 lg:px-0 bg-white rounded-xl">
 					<div
-						class="md:flex md:flex-row-reverse w-full lg:w-[75%] mx-auto py-8"
+						class="md:flex md:flex-row-reverse w-full mx-auto py-8"
 					>
 						<!-- Question -->
 						<div
-							class="flex items-center justify-center basis-1/2 gap-2 leading-10"
+							class="flex items-center justify-center basis-1/2 gap-2 leading-10 md:p-4"
 						>
-							- في المَلْعَبِ ٤٠٠٠ مُشَجِعٍ كَمْ عَشَرةً مِنَ المُشَجِعينَ في
+							_ في المَلْعَبِ ٤٠٠٠ مُشَجِعٍ كَمْ عَشَرةً مِنَ المُشَجِعينَ في
 							المَلْعبِ؟
 						</div>
 						<!-- /Question -->
-						<!-- Question guide -->
+						<!-- Answers -->
 						<div class="w-full flex justify-center basis-1/2 my-6">
-							<div class="flex flex-col w-full gap-4 px-4">
-								<!-- Answers -->
-								<div
+							<div class="flex flex-col w-[20rem] gap-4 px-4">
+								<UiInputRadio
 									@click="(answer = 4), check()"
-									class="border rounded-3xl flex justify-center gap-4 px-4 py-2"
-								>
-									<input
-										value="4"
-										type="radio"
-										id="answer1"
-										name="answer"
-										hidden
-									/>
-									<label for="answer1">٤ عشرة</label>
-								</div>
+									forId="answer1"
+									name="answer"
+									title="٤ عشرة"
+									:hidden="true"
+								/>
 
-								<div
+								<UiInputRadio
 									@click="(answer = 40), check()"
-									class="border rounded-3xl flex justify-center gap-4 px-4 py-2"
-								>
-									<input
-										value="40"
-										type="radio"
-										id="answer2"
-										name="answer"
-										hidden
-									/>
-									<label for="answer2">٤٠ عشرة</label>
-								</div>
+									forId="answer2"
+									name="answer"
+									title="٤٠ عشرة"
+									:hidden="true"
+								/>
 
-								<div
+								<UiInputRadio
 									@click="(answer = 400), check()"
-									class="border rounded-3xl flex justify-center gap-4 px-4 py-2"
-								>
-									<input
-										value="400"
-										type="radio"
-										id="answer3"
-										name="answer"
-										hidden
-									/>
-									<label for="answer3">٤٠٠ عشرة</label>
-								</div>
+									forId="answer3"
+									name="answer"
+									title="٤٠٠ عشرة"
+									:hidden="true"
+								/>
 
-								<div
+								<UiInputRadio
 									@click="(answer = 4000), check()"
-									class="border rounded-3xl flex justify-center gap-4 px-4 py-2"
-								>
-									<input
-										value="4000"
-										type="radio"
-										id="answer4"
-										name="answer"
-										hidden
-									/>
-									<label for="answer4">٤٠٠٠ عشرة</label>
-								</div>
-								<!-- /Answers -->
+									forId="answer4"
+									name="answer"
+									title="٤٠٠٠ عشرة"
+									:hidden="true"
+								/>
 							</div>
 						</div>
-						<!-- /Question guide -->
+						<!-- /Answers -->
 					</div>
 				</div>
 			</section>

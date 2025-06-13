@@ -16,7 +16,7 @@
 						- أعد الألوف, ثم أكتب العدد في صورة مِئات وعَشَراتٍ:
 					</h2>
           <div
-            class="md:flex md:flex-row-reverse w-full lg:w-[75%] mx-auto py-8"
+            class="md:flex md:flex-row-reverse w-full mx-auto py-8"
           >
             <!-- Question -->
             <div class="flex items-center justify-center basis-1/2 gap-2">

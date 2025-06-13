@@ -15,7 +15,7 @@
 					<h2 class="py-4 md:px-4 mb-8 md:mb-6 text-gray-900">
 						- أعد الألوف, ثم أكتب العدد في صورة احادٍ:
 					</h2>
-					<div class="md:flex md:flex-row-reverse w-full lg:w-[75%] mx-auto">
+					<div class="md:flex md:flex-row-reverse w-full mx-auto">
 						<!-- Question -->
 						<div class="flex items-center justify-center basis-1/2 gap-2">
 							<span> = </span>
