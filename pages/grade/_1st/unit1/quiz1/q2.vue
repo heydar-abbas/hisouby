@@ -13,6 +13,7 @@
 				<div>
 					<label for="">2 * 2 = </label>
 					<UiTextInput
+						type="text"
 						v-model="resuilt"
 						class="inline w-14 py-1 px-2 text-center placeholder:text-sm"
 					/>
@@ -49,7 +50,7 @@ definePageMeta({
 });
 
 useHead({
-	title: "السؤال الاول",
+	title: "السؤال الثاني",
 });
 
 const { $userStore } = useNuxtApp();
@@ -60,18 +61,18 @@ const popup = reactive({
 	successBtn: false,
 	popupTitle: "احسنت",
 	popupBtnText: "التالي",
-	next: "/grade/_1st/quiz1/q2",
+	next: "/grade/_1st/quiz1/q3",
 });
 
 function check() {
 	if (resuilt.value === "4") {
-		quiz.value.q1 = 1;
+		quiz.value.q2 = 1;
 		popup.popupTitle = "احسنت";
 		popup.popupBtnText = "التالي";
 		popup.successBtn = true;
 		popup.open = true;
 	} else {
-		quiz.value.q1 = -1;
+		quiz.value.q2 = 0;
 		popup.popupTitle = "حاول مرة اخرى";
 		popup.popupBtnText = "حسنا";
 		popup.successBtn = false;

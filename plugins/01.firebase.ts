@@ -13,10 +13,10 @@ export default defineNuxtPlugin(() => {
 		appId: rc.public.FIREBASE_APP_ID,
 	};
 
-	const app = initializeApp(firebaseConfig);
-	const db = getFirestore(app);
+	const firebaseApp = initializeApp(firebaseConfig);
+	const db = getFirestore(firebaseApp);
 
 	return {
-		provide: { db, firebaseApp: app },
+		provide: { db, firebaseApp },
 	};
 });

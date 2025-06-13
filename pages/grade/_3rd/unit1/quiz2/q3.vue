@@ -49,7 +49,7 @@ definePageMeta({
 });
 
 useHead({
-	title: "السؤال الخامس",
+	title: "السؤال الثالث",
 });
 
 const { $userStore } = useNuxtApp();
@@ -60,18 +60,18 @@ const popup = reactive({
 	successBtn: false,
 	popupTitle: "احسنت",
 	popupBtnText: "التالي",
-	next: "/grade/_1st/quiz1/q6",
+	next: "/grade/_1st/quiz1/q4",
 });
 
 function check() {
 	if (resuilt.value === "4") {
-		quiz.value.q5 = 1;
+		quiz.value.q1 = 1;
 		popup.popupTitle = "احسنت";
 		popup.popupBtnText = "التالي";
 		popup.successBtn = true;
 		popup.open = true;
 	} else {
-		quiz.value.q5 = -1;
+		quiz.value.q1 = -1;
 		popup.popupTitle = "حاول مرة اخرى";
 		popup.popupBtnText = "حسنا";
 		popup.successBtn = false;

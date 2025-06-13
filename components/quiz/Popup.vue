@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-if="popup.open"
-		class="absolute -top-32 left-10 bg-gray-50 w-52 p-4 border-1 border-gray-300 rounded-lg"
+		class="absolute -top-32 left-[50%] -translate-x-[50%] z-10 bg-gray-50 w-56 p-4 border-1 border-gray-300 rounded-lg"
 	>
 		<div class="text-center mb-4" v-text="popup.popupTitle"></div>
 		<div>
@@ -27,8 +27,8 @@ const route = useRoute();
 const path = route.fullPath.split("/")[route.fullPath.split("/").length - 1];
 
 function resetQuiz() {
-	if (path === "q6") {
-		$userStore.resetQuestions();
+	if (path === "q8") {
+		$userStore.resetQuiz();
 	}
 }
 </script>

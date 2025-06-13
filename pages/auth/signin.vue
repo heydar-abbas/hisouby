@@ -21,6 +21,9 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+	title: "تسجيل الدخول"
+});
 const { $authStore } = useNuxtApp();
 
 function handleSignInWithGoogle() {

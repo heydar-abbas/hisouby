@@ -13,6 +13,7 @@
 				<div>
 					<label for="">2 * 2 = </label>
 					<UiTextInput
+						type="text"
 						v-model="resuilt"
 						class="inline w-14 py-1 px-2 text-center placeholder:text-sm"
 					/>
@@ -60,18 +61,18 @@ const popup = reactive({
 	successBtn: false,
 	popupTitle: "احسنت",
 	popupBtnText: "التالي",
-	next: "/grade/_1st/quiz2/q1",
+	next: "/grade/_1st/quiz1/q6",
 });
 
 function check() {
 	if (resuilt.value === "4") {
-		quiz.value.q6 = 1;
+		quiz.value.q5 = 1;
 		popup.popupTitle = "احسنت";
-		popup.popupBtnText = "الاختبار التالي";
+		popup.popupBtnText = "التالي";
 		popup.successBtn = true;
 		popup.open = true;
 	} else {
-		quiz.value.q6 = -1;
+		quiz.value.q5 = -1;
 		popup.popupTitle = "حاول مرة اخرى";
 		popup.popupBtnText = "حسنا";
 		popup.successBtn = false;

@@ -1,57 +1,105 @@
-<script setup lang="ts"></script>
-
 <template>
-	<div class="w-full lg:flex p-4 md:p-0">
-		<GradeAside title="الصف الثالث الابتدائية" units="5" tests="25" />
+  <!-- All grade units -->
+  <article class="lg:basis-2/3 w-full md:w-2xl mx-auto lg:p-4 mb-12">
+    <header>
+      <h1 class="text-3xl font-semibold py-8 text-center lg:text-start">
+        الصف الثالث الابتدائية
+      </h1>
+    </header>
+    <!-- Quiz Guideline -->
+    <QuizGuideline />
+    <!-- /Quiz Guideline -->
+    <!-- Units -->
+    <section class="grid lg:grid-cols-2 gap-6">
+      <UnitCard title="الفصل الاول: الأعداد حتى ٩٩٩٩">
+        <QuizLink
+          href="/grade/_3rd/unit1/quiz1/q1"
+          :degre="grades?.g3?.unit1?.quiz1"
+        />
+        <QuizLink
+          href="/grade/_3rd/unit1/quiz2/q1"
+          :degre="grades?.g3?.unit1?.quiz2"
+        />
+      </UnitCard>
 
-		<div class="lg:basis-2/3 w-full h-fit md:w-2xl mx-auto lg:p-4">
-			<h1 class="text-3xl font-semibold py-8 text-center lg:text-start">
-				الصف الثالث الابتدائية
-			</h1>
+      <UnitCard title="الفصل الثاني">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
 
-			<div
-				class="flex flex-wrap justify-center md:justify-start md:items-start gap-6"
-			>
-				<UnitCard title="الفصل الاول">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+      <UnitCard title="الفصل الثالث">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
 
-				<UnitCard title="الفصل الثاني">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+      <UnitCard title="الفصل الرابع">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
 
-				<UnitCard title="الفصل الثالث">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+      <UnitCard title="الفصل الخامس">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
 
-				<UnitCard title="الفصل الرابع">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+      <UnitCard title="الفصل السادس">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
 
-				<UnitCard title="الفصل الخامس">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
-			</div>
-		</div>
-	</div>
+      <UnitCard title="الفصل السابع">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
+
+      <UnitCard title="الفصل الثامن">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
+
+      <UnitCard title="الفصل التاسع">
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+        <QuizLink href="#" degre="" />
+      </UnitCard>
+    </section>
+    <!-- /Units -->
+  </article>
+  <!-- /All grade units -->
 </template>
+
+<script setup lang="ts">
+definePageMeta({
+  layout: "3rd-grade"
+});
+
+useHead({
+  title: "الثالث الابتدائية | الحيسوبي",
+});
+
+const { $userStore } = useNuxtApp();
+const grades = computed(() => $userStore?.userInfo?.grades);
+</script>

@@ -6,10 +6,12 @@
 			<NuxtLink :to="href" @click="resetQuiz">
 				<IconHome class="w-6 h-6 text-gray-900" />
 			</NuxtLink>
-			<IconArrowLeft class="w-6 h-6 mx-1 text-gray-900" />
-			<span class="text-sm mx-1 text-gray-700">{{ unit }}</span>
-			<IconArrowLeft class="w-6 h-6 mx-1 text-gray-900" />
-			<span class="text-sm text-gray-700 mx-1 font-semibold">{{ quize }}</span>
+			<IconCircle class="w-1 mx-1 pt-3 text-gray-900" />
+			<span class="text-xs mx-1 text-gray-700">{{ unit }}</span>
+			<IconCircle class="w-1 mx-1 pt-3 text-gray-900" />
+			<span class="text-xs mx-1 text-gray-700">{{ quize }}</span>
+			<IconCircle class="w-1 mx-1 pt-3 text-gray-900" />
+			<span class="text-xs text-gray-700 mx-1 font-semibold">{{ question }}</span>
 		</div>
 	</section>
 </template>
@@ -18,12 +20,13 @@
 defineProps<{
 	unit: string;
 	quize: string;
+	question: string;
 	href: string;
 }>();
 
 const { $userStore } = useNuxtApp();
 
 function resetQuiz() {
-	$userStore.resetQuestions();
+	$userStore.resetQuiz();
 }
 </script>

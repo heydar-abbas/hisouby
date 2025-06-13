@@ -65,13 +65,13 @@ const popup = reactive({
 
 function check() {
 	if (resuilt.value === "4") {
-		quiz.value.q4 = 1;
+		quiz.value.q1 = 1;
 		popup.popupTitle = "احسنت";
 		popup.popupBtnText = "التالي";
 		popup.successBtn = true;
 		popup.open = true;
 	} else {
-		quiz.value.q4 = -1;
+		quiz.value.q1 = -1;
 		popup.popupTitle = "حاول مرة اخرى";
 		popup.popupBtnText = "حسنا";
 		popup.successBtn = false;

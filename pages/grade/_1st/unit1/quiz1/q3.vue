@@ -13,6 +13,7 @@
 				<div>
 					<label for="">2 * 2 = </label>
 					<UiTextInput
+						type="text"
 						v-model="resuilt"
 						class="inline w-14 py-1 px-2 text-center placeholder:text-sm"
 					/>
