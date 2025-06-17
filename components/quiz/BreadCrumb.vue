@@ -24,9 +24,9 @@ defineProps<{
 	href: string;
 }>();
 
-const { $userStore } = useNuxtApp();
+const { $quizStore } = useNuxtApp();
 
 function resetQuiz() {
-	$userStore.resetQuiz();
+	$quizStore.resetQuiz();
 }
 </script>

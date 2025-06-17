@@ -3,7 +3,7 @@
 		class="absolute top-38 left-[50%] transform -translate-x-[50%] duration-300 grid grid-cols-2 bg-gray-100 p-4 rounded-xl w-72 justify-items-center"
 		:class="avatarListDropDown ? 'rotate-y-0' : 'rotate-y-90'"
 	>
-		<UiAvatarListItem
+		<ProfileAvatarListItem
 			v-for="(avatar, index) in avatars"
 			:key="index"
 			:avatar="avatar"
@@ -28,6 +28,6 @@ const avatars = reactive<string[]>([
 ]);
 
 function closeList() {
-	avatarListDropDown.value = !avatarListDropDown;
+	avatarListDropDown.value = false;
 }
 </script>

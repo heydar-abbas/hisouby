@@ -5,7 +5,7 @@
 			<QuizBreadCrumb
 				unit="الفصل الأول"
 				quize="الدرس الثاني"
-				question="السؤال الثاني"
+				question="السؤال السابع"
 				href="/grade/_3rd"
 			/>
 			<!-- /Bread crump -->
@@ -13,31 +13,28 @@
 			<section class="w-full h-screen mt-6">
 				<div class="w-full px-4 md:px-0 lg:px-0 bg-white rounded-xl">
 					<h2 class="py-4 md:px-4 mb-8 md:mb-6 text-gray-900">
-						- أعد الألوف, ثم أكتب العدد في صورة احادٍ:
+						- أعد الألوف, ثم أكتب العدد في صورة مِئات وعَشَراتٍ:
 					</h2>
 					<div class="md:flex md:flex-row-reverse w-full mx-auto py-8">
 						<!-- Question -->
 						<div class="flex items-center justify-center basis-1/2 gap-2">
 							<span> = </span>
-							<UiDotedInput
-								type="text"
-								v-model="thousands.value"
-								class="w-16"
-							/>
-							<span>الوف = </span>
-							<UiDotedInput type="text" v-model="ones" class="w-16" />
-							<span>آحاد</span>
+							<UiDotedInput type="text" v-model="hundreds" class="w-16" />
+							<span>مِئات = </span>
+							<UiDotedInput type="text" v-model="tens" class="w-16" />
+							<span>عَشَرات</span>
 						</div>
 						<!-- /Question -->
+
 						<!-- Question guide -->
 						<div class="w-full flex justify-center basis-1/2 my-12">
-							<div class="flex gap-2 w-fit">
+							<div class="grid grid-cols-3 gap-2 w-fit">
 								<QuizGuideImg
 									v-for="(th, index) in thousands.repeatImg"
 									:key="index"
 									:imgSrc="thousands.imgSrc"
 									:imgAlt="thousands.imgAlt"
-									class="w-14"
+									class="w-16"
 								/>
 							</div>
 						</div>
@@ -78,38 +75,37 @@ const { $quizStore } = useNuxtApp();
 const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
 const thousands = reactive<{
-	value: string;
 	imgSrc: string;
 	imgAlt: string;
 	repeatImg: number;
 }>({
-	value: "",
 	imgSrc: "/images/quiz/thousands.webp",
 	imgAlt: "Thousands",
-	repeatImg: 4,
+	repeatImg: 6,
 });
-const ones = ref<string>("");
+const hundreds = ref<string>("");
+const tens = ref<string>("");
 
 function check(): void {
 	if (
-		(thousands.value === "4" && ones.value === "4000") ||
-		(thousands.value === "٤" && ones.value === "٤٠٠٠")
+		(hundreds.value === "60" && tens.value === "600") ||
+		(hundreds.value === "٦٠" && tens.value === "٦٠٠")
 	) {
-		quiz.value.q2 = 1;
-		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q3");
+		quiz.value.q7 = 1;
+		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q8");
 	} else {
-		quiz.value.q2 = 0;
+		quiz.value.q7 = 0;
 		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
 
 function handelSkip(): void {
 	popup.value.open = false;
-	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q3");
+	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q8");
 }
 
 function skipQuestion(): void {
-	quiz.value.q2 = 0;
+	quiz.value.q7 = 0;
 }
 
 onUnmounted(() => {

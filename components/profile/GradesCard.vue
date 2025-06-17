@@ -1,10 +1,7 @@
 <template>
-	<div class="py-4">
-		<div class="text-center p-3 border border-gray-400 rounded-t-md">
-			<h3>الصفوف المكتملة</h3>
-		</div>
+	<div class="w-full mb-8">
 		<ul
-			class="p-4 flex flex-wrap justify-start gap-3 border border-gray-400 rounded-b-md"
+			class="w-full lg:w-2xl mx-auto grid grid-cols-4 sm:grid-cols-6 gap-2 p-4 border border-gray-400 rounded-xl"
 		>
 			<slot></slot>
 		</ul>

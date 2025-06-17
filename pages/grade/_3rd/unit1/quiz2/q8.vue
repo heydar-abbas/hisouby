@@ -4,7 +4,7 @@
 			<!-- Bread crump -->
 			<QuizBreadCrumb
 				unit="الفصل الأول"
-				quize="الدرس الأول"
+				quize="الدرس الثاني"
 				question="السؤال الثامن"
 				href="/grade/_3rd"
 			/>
@@ -108,11 +108,11 @@ function check(): void {
 				...units.value,
 				unit1: {
 					...quizes.value,
-					quiz1: degree,
+					quiz2: degree,
 				},
 			},
 		});
-		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q1", true);
+		$quizStore.setPopup("احسنت", true, "#", true);
 	} else {
 		quiz.value.q8 = 0;
 		$quizStore.setPopup("حاول مرة اخرى", false, "", true);
@@ -121,7 +121,7 @@ function check(): void {
 
 function handleSkip(): void {
 	popup.value.open = false;
-	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q1", true);
+	$quizStore.setSkipPopup("#", true);
 }
 
 function skipQuestion(): void {

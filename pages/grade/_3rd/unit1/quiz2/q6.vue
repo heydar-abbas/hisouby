@@ -1,46 +1,65 @@
 <template>
-	<div>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الاول"
-			quize="التمرين الاول"
-			href="/grade/_1st"
-		/>
-		<!-- /Bread crump -->
-		<!-- Question -->
-		<section class="w-full min-h-screen">
-			<div class="w-full px-4 py-8 border-b-1 border-gray-400">
-				<div>
-					<label for="">2 * 2 = </label>
-					<UiTextInput
-						v-model="resuilt"
-						class="inline w-14 py-1 px-2 text-center placeholder:text-sm"
-					/>
+	<article class="w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
+		<div class="w-full xl:w-4xl mx-auto">
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثاني"
+				question="السؤال السادس"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
+
+			<section class="w-full h-screen mt-6">
+				<div class="w-full px-4 md:px-0 lg:px-0 bg-white rounded-xl">
+					<h2 class="py-4 md:px-4 mb-8 md:mb-6 text-gray-900">
+						- أعد الألوف, ثم أكتب العدد في صورة مِئات وعَشَراتٍ:
+					</h2>
+					<div class="md:flex md:flex-row-reverse w-full mx-auto py-8">
+						<!-- Question -->
+						<div class="flex items-center justify-center basis-1/2 gap-2">
+							<span> = </span>
+							<UiDotedInput type="text" v-model="hundreds" class="w-16" />
+							<span>مِئات = </span>
+							<UiDotedInput type="text" v-model="tens" class="w-16" />
+							<span>عَشَرات</span>
+						</div>
+						<!-- /Question -->
+
+						<!-- Question guide -->
+						<div class="w-full flex justify-center basis-1/2 my-12">
+							<div class="grid grid-cols-3 gap-2 w-fit">
+								<QuizGuideImg
+									v-for="(th, index) in thousands.repeatImg"
+									:key="index"
+									:imgSrc="thousands.imgSrc"
+									:imgAlt="thousands.imgAlt"
+									class="w-16"
+								/>
+							</div>
+						</div>
+						<!-- /Question guide -->
+					</div>
 				</div>
-			</div>
-		</section>
-		<!-- /Question -->
-		<!-- Quize footer -->
-		<QuizFooter
-			class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-		>
-			<!-- Actions -->
-			<div class="flex items-center gap-2">
-				<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-				<UiSecondaryButton> مرر </UiSecondaryButton>
-			</div>
-			<!-- /Actions -->
-			<!-- Indicator -->
-			<div class="grow flex justify-end items-center">
+			</section>
+			<!-- Quize footer -->
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
+
 				<QuizIndicator :quiz="quiz" />
-			</div>
-			<!-- /Indicator -->
-			<!-- Popup -->
-			<QuizPopup @closePopup="popup.open = !popup.open" :popup="popup" />
-			<!-- /Popup -->
-		</QuizFooter>
-		<!-- /Quize footer -->
-	</div>
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+			<!-- /Quize footer -->
+		</div>
+	</article>
 </template>
 
 <script setup lang="ts">
@@ -49,37 +68,48 @@ definePageMeta({
 });
 
 useHead({
-	title: "السؤال الخامس",
+	title: "الثالث الابتدائية - الفصل الأول",
 });
 
-const { $userStore } = useNuxtApp();
-const { quiz } = storeToRefs($userStore);
-const resuilt = ref<string>("");
-const popup = reactive({
-	open: false,
-	successBtn: false,
-	popupTitle: "احسنت",
-	popupBtnText: "التالي",
-	next: "/grade/_1st/quiz2",
-});
+const { $quizStore } = useNuxtApp();
+const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
-function check() {
-	if (resuilt.value === "4") {
-		quiz.value.q1 = 1;
-		popup.popupTitle = "احسنت";
-		popup.popupBtnText = "التالي";
-		popup.successBtn = true;
-		popup.open = true;
+const thousands = reactive<{
+	imgSrc: string;
+	imgAlt: string;
+	repeatImg: number;
+}>({
+	imgSrc: "/images/quiz/thousands.webp",
+	imgAlt: "Thousands",
+	repeatImg: 8,
+});
+const hundreds = ref<string>("");
+const tens = ref<string>("");
+
+function check(): void {
+	if (
+		(hundreds.value === "80" && tens.value === "800") ||
+		(hundreds.value === "٨٠" && tens.value === "٨٠٠")
+	) {
+		quiz.value.q6 = 1;
+		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q7");
 	} else {
-		quiz.value.q1 = -1;
-		popup.popupTitle = "حاول مرة اخرى";
-		popup.popupBtnText = "حسنا";
-		popup.successBtn = false;
-		popup.open = true;
+		quiz.value.q6 = 0;
+		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
 
+function handelSkip(): void {
+	popup.value.open = false;
+	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q7");
+}
+
+function skipQuestion(): void {
+	quiz.value.q6 = 0;
+}
+
 onUnmounted(() => {
-	popup.open = false;
+	popup.value.open = false;
+	skipPopup.value.open = false;
 });
 </script>

@@ -33,9 +33,10 @@
 						<div class="w-full flex justify-center basis-1/2 my-12">
 							<div class="flex gap-2 w-fit">
 								<QuizGuideImg
-									v-for="th in thousands.repeatImg"
-									imgSrc="/_nuxt/assets/images/quiz/thousands.webp"
-									imgAlt="Thousands"
+									v-for="(th, index) in thousands.repeatImg"
+									:key="index"
+									:imgSrc="thousands.imgSrc"
+									:imgAlt="thousands.imgAlt"
 									class="w-28"
 								/>
 							</div>
@@ -51,11 +52,13 @@
 				<!-- Actions -->
 				<div class="flex items-center gap-2">
 					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-					<UiSecondaryButton> مرر </UiSecondaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
 				<!-- /Actions -->
+
 				<QuizIndicator :quiz="quiz" />
-				<QuizPopup @closePopup="popup.open = !popup.open" :popup="popup" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
 			</QuizFooter>
 			<!-- /Quize footer -->
 		</div>
@@ -71,50 +74,46 @@ useHead({
 	title: "الثالث الابتدائية - الفصل الأول",
 });
 
-const { $userStore } = useNuxtApp();
-const { quiz } = storeToRefs($userStore);
+const { $quizStore } = useNuxtApp();
+const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
-const thousands = reactive({
+const thousands = reactive<{
+	value: string;
+	imgSrc: string;
+	imgAlt: string;
+	repeatImg: number;
+}>({
 	value: "",
+	imgSrc: "/images/quiz/thousands.webp",
+	imgAlt: "Thousands",
 	repeatImg: 2,
 });
 const ones = ref<string>("");
 
-const popup = reactive({
-	open: false,
-	successBtn: false,
-	popupTitle: "",
-	popupBtnText: "",
-	next: "",
-});
-
-function check() {
+function check(): void {
 	if (
 		(thousands.value === "2" && ones.value === "2000") ||
 		(thousands.value === "٢" && ones.value === "٢٠٠٠")
 	) {
 		quiz.value.q1 = 1;
-		setPopup("احسنت", "التالي", true, "/grade/_3rd/unit1/quiz1/q2");
+		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz1/q2");
 	} else {
 		quiz.value.q1 = 0;
-		setPopup("حاول مرة اخرى", "حسنا", false, "");
+		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
 
-function setPopup(
-	title: string,
-	btnText: string,
-	successBtn: boolean,
-	next: string
-) {
-	popup.popupTitle = title;
-	popup.popupBtnText = btnText;
-	popup.successBtn = successBtn;
-	popup.next = next;
-	popup.open = true;
+function handelSkip(): void {
+	popup.value.open = false;
+	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz1/q2");
+}
+
+function skipQuestion(): void {
+	quiz.value.q1 = 0;
 }
 
 onUnmounted(() => {
-	popup.open = false;
+	popup.value.open = false;
+	skipPopup.value.open = false;
 });
 </script>

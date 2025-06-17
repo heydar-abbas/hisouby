@@ -51,7 +51,7 @@ onMounted(() => {
 });
 
 function changeAvatar(event: any) {
-	form.avatar = `/_nuxt/assets/images/avatars/${event}`;
+	form.avatar = `/images/avatars/${event}`;
 }
 
 function submitUpdate() {

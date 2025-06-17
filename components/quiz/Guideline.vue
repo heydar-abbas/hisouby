@@ -5,19 +5,19 @@
         <span
           class="w-5 h-5 border-2 border-lime-500 bg-lime-500 rounded-sm"
         ></span>
-        متمكن
+        ممتاز
       </li>
       <li class="flex items-center gap-2 text-sm">
         <span
           class="w-5 h-5 border-2 border-amber-500 bg-amber-500 rounded-sm"
         ></span>
-        على دراية
+        جيد
       </li>
       <li class="flex items-center gap-2 text-sm">
         <span
           class="w-5 h-5 border-2 border-rose-500 bg-rose-500 rounded-sm"
         ></span>
-        حاوَلَ
+        ضعيف
       </li>
       <li class="flex items-center gap-2 text-sm">
         <span class="w-5 h-5 border-2 border-gray-500 rounded-sm"></span>

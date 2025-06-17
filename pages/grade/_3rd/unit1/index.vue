@@ -8,18 +8,19 @@
     <!-- Quiz Guideline -->
     <QuizGuideline />
     <!-- /Quiz Guideline -->
+     
     <section class="w-full xl:w-3xl mx-auto p-4 mb-12">
       <UnitCard title="">
         <QuizCard
           title="الدرس الاول: مفهوم الألف والعد بالألوف"
           link="/grade/_3rd/unit1/quiz1/q1"
-          :degre="grades?.g3?.unit1?.quiz1"
+          :degree="grades?.g3?.unit1?.quiz1"
         />
 
         <QuizCard
           title="الدرس الثاني: الأعداد من ١٠٠٠ الى ٩٩٩٩"
           link="/grade/_3rd/unit1/quiz2/q1"
-          :degre="grades?.g3?.unit1?.quiz2"
+          :degree="grades?.g3?.unit1?.quiz2"
         />
       </UnitCard>
     </section>

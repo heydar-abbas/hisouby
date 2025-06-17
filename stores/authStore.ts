@@ -7,14 +7,13 @@ import {
 import { doc, getDoc, setDoc, Timestamp } from "firebase/firestore";
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { useUserStore } from "~/stores/userStore";
 
 export const useAuthStore = defineStore(
   "authStore",
   () => {
-    const { $db, $firebaseApp } = useNuxtApp();
+    const { $db, $firebaseApp, $userStore } = useNuxtApp();
     const auth = getAuth($firebaseApp);
-    const userStore = useUserStore();
+
     /** States **/
     const isLoggedIn = ref<boolean>(false);
 
@@ -40,14 +39,16 @@ export const useAuthStore = defineStore(
             avatar: user.photoURL,
             grades: {
               g1: {
-                done: 0,
-                quiz1: "",
+                done: false,
+                unit1: {
+                  quiz1: "",
+                },
               },
             },
-            level: {
-              proficient: 0,
-              familiar: 0,
-              attempted: 0,
+            degreeCounter: {
+              excellent: 0,
+              good: 0,
+              poor: 0,
             },
             createdAt: Timestamp.fromDate(new Date()),
           });
@@ -66,7 +67,7 @@ export const useAuthStore = defineStore(
     function handleSignOut() {
       signOut(auth).then(() => {
         isLoggedIn.value = false;
-        userStore.userInfo = null;
+        $userStore.userInfo = null;
         navigateTo("/");
       });
     }

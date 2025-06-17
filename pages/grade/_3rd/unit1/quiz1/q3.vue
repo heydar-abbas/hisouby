@@ -15,12 +15,10 @@
 					<h2 class="py-4 md:px-4 mb-8 md:mb-6 text-gray-900">
 						- أعد الألوف, ثم أكتب العدد في صورة احادٍ:
 					</h2>
-					<div
-						class="md:flex md:flex-row-reverse w-full mx-auto py-8"
-					>
+					<div class="md:flex md:flex-row-reverse w-full mx-auto py-8">
 						<!-- Question -->
 						<div class="flex items-center justify-center basis-1/2 gap-2">
-							<span>=</span>
+							<span> = </span>
 							<UiDotedInput
 								type="text"
 								v-model="thousands.value"
@@ -31,13 +29,15 @@
 							<span>آحاد</span>
 						</div>
 						<!-- /Question -->
+
 						<!-- Question guide -->
 						<div class="w-full flex justify-center basis-1/2 my-12">
 							<div class="grid grid-cols-3 gap-2 w-fit">
 								<QuizGuideImg
-									v-for="th in thousands.repeatImg"
-									imgSrc="/_nuxt/assets/images/quiz/thousands.webp"
-									imgAlt="Thousands"
+									v-for="(th, index) in thousands.repeatImg"
+									:key="index"
+									:imgSrc="thousands.imgSrc"
+									:imgAlt="thousands.imgAlt"
 									class="w-16"
 								/>
 							</div>
@@ -53,11 +53,13 @@
 				<!-- Actions -->
 				<div class="flex items-center gap-2">
 					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-					<UiSecondaryButton> مرر </UiSecondaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
 				<!-- /Actions -->
+
 				<QuizIndicator :quiz="quiz" />
-				<QuizPopup @closePopup="popup.open = !popup.open" :popup="popup" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
 			</QuizFooter>
 			<!-- /Quize footer -->
 		</div>
@@ -73,50 +75,46 @@ useHead({
 	title: "الثالث الابتدائية - الفصل الأول",
 });
 
-const { $userStore } = useNuxtApp();
-const { quiz } = storeToRefs($userStore);
+const { $quizStore } = useNuxtApp();
+const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
-const thousands = reactive({
+const thousands = reactive<{
+	value: string;
+	imgSrc: string;
+	imgAlt: string;
+	repeatImg: number;
+}>({
 	value: "",
+	imgSrc: "/images/quiz/thousands.webp",
+	imgAlt: "Thousands",
 	repeatImg: 6,
 });
 const ones = ref<string>("");
 
-const popup = reactive({
-	open: false,
-	successBtn: false,
-	popupTitle: "",
-	popupBtnText: "",
-	next: "",
-});
-
-function check() {
+function check(): void {
 	if (
 		(thousands.value === "6" && ones.value === "6000") ||
 		(thousands.value === "٦" && ones.value === "٦٠٠٠")
 	) {
 		quiz.value.q3 = 1;
-		setPopup("احسنت", "التالي", true, "/grade/_3rd/unit1/quiz1/q4");
+		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz1/q4");
 	} else {
 		quiz.value.q3 = 0;
-		setPopup("حاول مرة اخرى", "حسنا", false, "");
+		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
 
-function setPopup(
-	title: string,
-	btnText: string,
-	successBtn: boolean,
-	next: string
-) {
-	popup.popupTitle = title;
-	popup.popupBtnText = btnText;
-	popup.successBtn = successBtn;
-	popup.next = next;
-	popup.open = true;
+function handelSkip(): void {
+	popup.value.open = false;
+	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz1/q4");
+}
+
+function skipQuestion(): void {
+	quiz.value.q3 = 0;
 }
 
 onUnmounted(() => {
-	popup.open = false;
+	popup.value.open = false;
+	skipPopup.value.open = false;
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="basis-80 text-gray-900">
+	<div class="p-4 text-gray-900">
 		<label>
 			<span>{{ title }}:</span>
 			<span class="mr-2">{{ value }}%</span>
