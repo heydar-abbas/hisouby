@@ -102,13 +102,13 @@ const answer = ref<number>(0);
 function check(): void {
 	if (answer.value === 400) {
 		quiz.value.q8 = 1;
-		const degree = $quizStore.getDegree() as string;
+		quizes.value.quiz1 = $quizStore.getDegree() as string;
+		$quizStore.setDegreesCounter(units.value);
 		$quizStore.updateQuiz({
 			g3: {
 				...units.value,
 				unit1: {
 					...quizes.value,
-					quiz1: degree,
 				},
 			},
 		});
@@ -126,13 +126,13 @@ function handleSkip(): void {
 
 function skipQuestion(): void {
 	quiz.value.q8 = 0;
-	const degree = $quizStore.getDegree() as string;
+	quizes.value.quiz1 = $quizStore.getDegree() as string;
+	$quizStore.setDegreesCounter(units.value);
 	$quizStore.updateQuiz({
 		g3: {
 			...units.value,
 			unit1: {
 				...quizes.value,
-				quiz1: degree,
 			},
 		},
 	});

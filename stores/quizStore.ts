@@ -39,10 +39,11 @@ export const useQuizStore = defineStore(
 		/** Stores **/
 		const authStore = useAuthStore();
 		const userStore = useUserStore();
+		const { userInfo } = storeToRefs(userStore);
 
 		/** States **/
-		const grades = ref(userStore.userInfo?.grades);
-		const degrees = ref<Degree>({
+		const grades = ref(userInfo.value?.grades);
+		const degreesCounter = ref<Degree>({
 			excellent: 0,
 			good: 0,
 			poor: 0,
@@ -76,16 +77,38 @@ export const useQuizStore = defineStore(
 		});
 
 		/** Actions **/
+		function setDegreesCounter(units: any): void {
+			resetDegreesCounter();
+
+			for (const u in units) {
+				if (typeof units[u] === "object") {
+					for (const q in units[u]) {
+						switch (units[u][q]) {
+							case "excellent":
+								degreesCounter.value.excellent += 1;
+								break;
+							case "good":
+								degreesCounter.value.good += 1;
+								break;
+							case "poor":
+								degreesCounter.value.poor += 1;
+								break;
+
+							default:
+								break;
+						}
+					}
+				}
+			}
+		}
+
 		function getDegree(): string {
 			const sum = sumQuestions();
 			if (sum === 8) {
-				degrees.value.excellent += 1;
 				return "excellent";
 			} else if (sum < 8 && sum >= 4) {
-				degrees.value.good += 1;
 				return "good";
 			} else if (sum < 4) {
-				degrees.value.poor += 1;
 				return "poor";
 			}
 			return "";
@@ -96,6 +119,12 @@ export const useQuizStore = defineStore(
 				(a: number, b: number) => a + b,
 				0
 			);
+		}
+
+		function resetDegreesCounter(): void {
+			(Object.keys(degreesCounter.value) as (keyof Degree)[]).forEach((degree) => {
+				degreesCounter.value[degree] = 0;
+			});
 		}
 
 		function resetQuiz(): void {
@@ -118,13 +147,9 @@ export const useQuizStore = defineStore(
 					...grade,
 				},
 				degreeCounter: {
-					...degrees.value,
+					...degreesCounter.value,
 				},
 			});
-		}
-
-		function updateGrade() {
-			//
 		}
 
 		function setPopup(
@@ -147,10 +172,11 @@ export const useQuizStore = defineStore(
 		}
 
 		return {
-			degrees,
+			degreesCounter,
 			quiz,
 			popup,
 			skipPopup,
+			setDegreesCounter,
 			sumQuestions,
 			resetQuiz,
 			getDegree,
