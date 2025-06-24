@@ -48,7 +48,6 @@ export const useQuizStore = defineStore(
 			good: 0,
 			poor: 0,
 		});
-
 		const popup = ref<Popup>({
 			open: false,
 			resetQuiz: false,
@@ -57,14 +56,12 @@ export const useQuizStore = defineStore(
 			popupBtnText: "",
 			next: "",
 		});
-
 		const skipPopup = ref<Popup>({
 			next: "",
 			open: false,
 			skip: false,
 			resetQuiz: false,
 		});
-
 		const quiz = ref<Quiz>({
 			q1: -1,
 			q2: -1,
@@ -79,7 +76,6 @@ export const useQuizStore = defineStore(
 		/** Actions **/
 		function setDegreesCounter(units: any): void {
 			resetDegreesCounter();
-
 			for (const u in units) {
 				if (typeof units[u] === "object") {
 					for (const q in units[u]) {

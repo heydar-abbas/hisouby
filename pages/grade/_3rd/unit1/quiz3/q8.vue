@@ -4,7 +4,7 @@
 		<QuizBreadCrumb
 			unit="الفصل الأول"
 			quize="الدرس الثاني"
-			question="السؤال الثامن"
+			question="السؤال السابع"
 			href="/grade/_3rd"
 		/>
 		<!-- /Bread crump -->
@@ -14,7 +14,7 @@
 			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
 				<!-- Question -->
 				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ مع زينب ٥ مئات + ٤ الاف, كم ديناراً مع زينب؟
+					_ في المزرعة ١٠٠٠ خروف و ٣٠٠ بقرة, كم حيواناً في المزرعة؟
 				</h2>
 				<!-- /Question -->
 
@@ -22,34 +22,34 @@
 				<div class="w-full flex justify-center basis-1/2 my-6 md:my-0">
 					<div class="flex flex-col w-[20rem] gap-4 px-4">
 						<UiInputRadio
-							@click="answer = 4000"
+							@click="answer = 1000"
 							forId="answer1"
 							name="answer"
-							title="٤٠٠٠ دينار"
+							title="١٠٠٠ حيوان"
 							:hidden="true"
 						/>
 
 						<UiInputRadio
-							@click="answer = 5400"
+							@click="answer = 300"
 							forId="answer2"
 							name="answer"
-							title="٥٤٠٠ دينار"
+							title="٣٠٠ حيوان"
 							:hidden="true"
 						/>
 
 						<UiInputRadio
-							@click="answer = 4500"
+							@click="answer = 2700"
 							forId="answer3"
 							name="answer"
-							title="٤٥٠٠ دينار"
+							title="٢٧٠٠ حيوان"
 							:hidden="true"
 						/>
 
 						<UiInputRadio
-							@click="answer = 45"
+							@click="answer = 1300"
 							forId="answer4"
 							name="answer"
-							title="٤٥ دينار"
+							title="١٣٠٠ حيوان"
 							:hidden="true"
 						/>
 					</div>
@@ -95,9 +95,9 @@ const quizes = ref(userInfo.value?.grades?.g3?.unit1);
 const answer = ref<number>(0);
 
 function check(): void {
-	if (answer.value === 4500) {
+	if (answer.value === 1300) {
 		quiz.value.q8 = 1;
-		quizes.value.quiz2 = $quizStore.getDegree() as string;
+		quizes.value.quiz1 = $quizStore.getDegree() as string;
 		$quizStore.setDegreesCounter(units.value);
 		$quizStore.updateQuiz({
 			g3: {
@@ -121,7 +121,7 @@ function handleSkip(): void {
 
 function skipQuestion(): void {
 	quiz.value.q8 = 0;
-	quizes.value.quiz2 = $quizStore.getDegree() as string;
+	quizes.value.quiz1 = $quizStore.getDegree() as string;
 	$quizStore.setDegreesCounter(units.value);
 	$quizStore.updateQuiz({
 		g3: {
