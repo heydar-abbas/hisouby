@@ -1,57 +1,100 @@
-<script setup lang="ts"></script>
-
 <template>
-	<div class="w-full lg:flex p-4 md:p-0">
-		<GradeAside title="الصف الثالث المتوسطة" units="5" tests="25" />
-
-		<div class="lg:basis-2/3 w-full h-fit md:w-2xl mx-auto lg:p-4">
+	<!-- All grade units -->
+	<article class="relative lg:basis-2/3 w-full md:w-2xl mx-auto lg:p-4 mb-12">
+		<ComingsoonOverlay />
+		<header>
 			<h1 class="text-3xl font-semibold py-8 text-center lg:text-start">
 				الصف الثالث المتوسطة
 			</h1>
+		</header>
+		<!-- Quiz Guideline -->
+		<QuizGuideline />
+		<!-- /Quiz Guideline -->
 
-			<div
-				class="flex flex-wrap justify-center md:justify-start md:items-start gap-6"
-			>
-				<UnitCard title="الفصل الاول">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+		<!-- Units -->
+		<section class="grid lg:grid-cols-2 gap-6">
+			<UnitCard title="الفصل الاول">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
 
-				<UnitCard title="الفصل الثاني">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+			<UnitCard title="الفصل الثاني">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
 
-				<UnitCard title="الفصل الثالث">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+			<UnitCard title="الفصل الثالث">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
 
-				<UnitCard title="الفصل الرابع">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
+			<UnitCard title="الفصل الرابع">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
 
-				<UnitCard title="الفصل الخامس">
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-					<TestLink />
-				</UnitCard>
-			</div>
-		</div>
-	</div>
+			<UnitCard title="الفصل الخامس">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
+
+			<UnitCard title="الفصل السادس">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
+
+			<UnitCard title="الفصل السابع">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
+
+			<UnitCard title="الفصل الثامن">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
+
+			<UnitCard title="الفصل التاسع">
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+				<QuizLink href="#" degree="" />
+			</UnitCard>
+		</section>
+		<!-- /Units -->
+	</article>
+	<!-- /All grade units -->
 </template>
+
+<script setup lang="ts">
+useHead({
+	title: "الثالث المتوسطة | الحيسوبي",
+});
+
+// const { $userStore } = useNuxtApp();
+// const grades = computed(() => $userStore?.userInfo?.grades);
+</script>

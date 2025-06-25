@@ -12,17 +12,17 @@
 		<section class="w-full xl:w-3xl mx-auto p-4 mb-12">
 			<UnitCard title="">
 				<QuizCard
-					title="الدرس الاول: مفهوم الألف والعد بالألوف"
+					title="مفهوم الألف والعد بالألوف"
 					link="/grade/_3rd/unit1/quiz1/q1"
 					:degree="grades?.g3?.unit1?.quiz1"
 				/>
 				<QuizCard
-					title="الدرس الثاني: الأعداد من ١٠٠٠ الى ٩٩٩٩"
+					title="الأعداد من ١٠٠٠ الى ٩٩٩٩"
 					link="/grade/_3rd/unit1/quiz2/q1"
 					:degree="grades?.g3?.unit1?.quiz2"
 				/>
 				<QuizCard
-					title="الدرس الثالث: القيمة المكانية للأعداد حتى ٩٩٩٩"
+					title="القيمة المكانية للأعداد حتى ٩٩٩٩"
 					link="/grade/_3rd/unit1/quiz3/q1"
 					:degree="grades?.g3?.unit1?.quiz3"
 				/>
