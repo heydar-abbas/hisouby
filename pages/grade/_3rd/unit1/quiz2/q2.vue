@@ -10,14 +10,10 @@
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:
-				</h2>
-				<!-- /Question -->
-				<!-- Answer -->
+		<QuizQuestionContent
+			question="_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:"
+		>
+			<div>
 				<div class="md:flex md:flex-row w-full md:w-[40rem] mx-auto mb-6">
 					<div
 						v-for="(pv, index) in placeValue"
@@ -56,9 +52,8 @@
 						<UiDotedInput v-model="theNumber" class="w-16" />
 					</div>
 				</div>
-				<!-- /Answer -->
 			</div>
-		</section>
+		</QuizQuestionContent>
 		<!-- /Question Content -->
 	</article>
 

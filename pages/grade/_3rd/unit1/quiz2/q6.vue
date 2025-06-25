@@ -10,53 +10,40 @@
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ شاهد مباراة كرة قدم ٦٠٠٠ رجل و ٧٠٠ امرأة. كم شخصاً شاهد المباراة؟
-				</h2>
-				<!-- /Question -->
-
-				<!-- Answers -->
-				<div class="w-full flex justify-center basis-1/2 my-6 md:my-0">
-					<div class="flex flex-col w-[20rem] gap-4 px-4">
-						<UiInputRadio
-							@click="answer = 6700"
-							forId="answer1"
-							name="answer"
-							title="٦٧٠٠ مشاهد"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 7000"
-							forId="answer2"
-							name="answer"
-							title="٧٠٠٠ مشاهد"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 7600"
-							forId="answer3"
-							name="answer"
-							title="٧٦٠٠ مشاهد"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 6000"
-							forId="answer4"
-							name="answer"
-							title="٦٠٠٠ مشاهد"
-							:hidden="true"
-						/>
-					</div>
-				</div>
-				<!-- /Answers -->
-			</div>
-		</section>
+		<QuizQuestionContent
+			question="_ شاهد مباراة كرة قدم ٦٠٠٠ رجل و ٧٠٠ امرأة. كم شخصاً شاهد المباراة؟"
+		>
+			<QuizMultipleChoiseCard>
+				<UiInputRadio
+					@click="answer = 6700"
+					forId="answer1"
+					name="answer"
+					title="٦٧٠٠ مشاهد"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 7000"
+					forId="answer2"
+					name="answer"
+					title="٧٠٠٠ مشاهد"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 7600"
+					forId="answer3"
+					name="answer"
+					title="٧٦٠٠ مشاهد"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 6000"
+					forId="answer4"
+					name="answer"
+					title="٦٠٠٠ مشاهد"
+					:hidden="true"
+				/>
+			</QuizMultipleChoiseCard>
+		</QuizQuestionContent>
 		<!-- /Question Content -->
 	</article>
 

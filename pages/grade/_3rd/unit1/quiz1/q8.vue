@@ -10,57 +10,40 @@
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<div class="md:flex md:flex-row-reverse w-full mx-auto py-8">
-					<!-- Question -->
-					<div
-						class="flex items-center justify-center basis-1/2 gap-2 leading-10 md:p-4"
-					>
-						_ في الملعب ٤٠٠٠ مشجع كم عشرة من المشجعين في الملعب؟
-					</div>
-					<!-- /Question -->
-
-					<!-- Answers -->
-					<div class="w-full flex justify-center basis-1/2 my-6 md:my-0">
-						<div class="flex flex-col w-[20rem] gap-4 px-4">
-							<UiInputRadio
-								@click="answer = 4"
-								forId="answer1"
-								name="answer"
-								title="٤ عشرة"
-								:hidden="true"
-							/>
-
-							<UiInputRadio
-								@click="answer = 40"
-								forId="answer2"
-								name="answer"
-								title="٤٠ عشرة"
-								:hidden="true"
-							/>
-
-							<UiInputRadio
-								@click="answer = 400"
-								forId="answer3"
-								name="answer"
-								title="٤٠٠ عشرة"
-								:hidden="true"
-							/>
-
-							<UiInputRadio
-								@click="answer = 4000"
-								forId="answer4"
-								name="answer"
-								title="٤٠٠٠ عشرة"
-								:hidden="true"
-							/>
-						</div>
-					</div>
-					<!-- /Answers -->
-				</div>
-			</div>
-		</section>
+		<QuizQuestionContent
+			question="_ في الملعب ٤٠٠٠ مشجع كم عشرة من المشجعين في الملعب؟"
+		>
+			<QuizMultipleChoiseCard>
+				<UiInputRadio
+					@click="answer = 4"
+					forId="answer1"
+					name="answer"
+					title="٤ عشرة"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 40"
+					forId="answer2"
+					name="answer"
+					title="٤٠ عشرة"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 400"
+					forId="answer3"
+					name="answer"
+					title="٤٠٠ عشرة"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 4000"
+					forId="answer4"
+					name="answer"
+					title="٤٠٠٠ عشرة"
+					:hidden="true"
+				/>
+			</QuizMultipleChoiseCard>
+		</QuizQuestionContent>
 		<!-- /Question Content -->
 	</article>
 

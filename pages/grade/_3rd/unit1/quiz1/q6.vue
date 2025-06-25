@@ -10,38 +10,31 @@
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ أعد الألوف, ثم أكتب العدد في صورة مِئات وعَشَراتٍ:
-				</h2>
-				<!-- /Question -->
-				<!-- Answer -->
-				<div class="md:flex md:flex-row-reverse w-full mx-auto mb-6">
-					<div class="flex items-center justify-center basis-1/2 gap-2">
-						<span> = </span>
-						<UiDotedInput type="text" v-model="hundreds" class="w-16" />
-						<span>مِئات = </span>
-						<UiDotedInput type="text" v-model="tens" class="w-16" />
-						<span>عَشَرات</span>
-					</div>
+		<QuizQuestionContent
+			question="_ أعد الألوف, ثم أكتب العدد في صورة مِئات وعَشَراتٍ:"
+		>
+			<div class="md:flex md:flex-row-reverse w-full mx-auto mb-6">
+				<div class="flex items-center justify-center basis-1/2 gap-2">
+					<span> = </span>
+					<UiDotedInput type="text" v-model="hundreds" class="w-16" />
+					<span>مِئات = </span>
+					<UiDotedInput type="text" v-model="tens" class="w-16" />
+					<span>عَشَرات</span>
+				</div>
 
-					<div class="w-full flex justify-center basis-1/2 my-12 md:my-0">
-						<div class="grid grid-cols-3 gap-2 w-fit">
-							<QuizGuideImg
-								v-for="(th, index) in thousands.repeatImg"
-								:key="index"
-								:imgSrc="thousands.imgSrc"
-								:imgAlt="thousands.imgAlt"
-								class="w-16"
-							/>
-						</div>
+				<div class="w-full flex justify-center basis-1/2 my-12 md:my-0">
+					<div class="grid grid-cols-3 gap-2 w-fit">
+						<QuizGuideImg
+							v-for="(th, index) in thousands.repeatImg"
+							:key="index"
+							:imgSrc="thousands.imgSrc"
+							:imgAlt="thousands.imgAlt"
+							class="w-16"
+						/>
 					</div>
 				</div>
-				<!-- /Answer -->
 			</div>
-		</section>
+		</QuizQuestionContent>
 		<!-- Question Content -->
 	</article>
 

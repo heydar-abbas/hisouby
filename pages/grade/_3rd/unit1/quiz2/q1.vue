@@ -10,14 +10,10 @@
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:
-				</h2>
-				<!-- /Question -->
-				<!-- Answer -->
+		<QuizQuestionContent
+			question="_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:"
+		>
+			<div>
 				<div class="md:flex md:flex-row w-full mx-auto mb-6">
 					<div
 						v-for="(pv, index) in placeValue"
@@ -56,9 +52,54 @@
 						<UiDotedInput v-model="theNumber" class="w-16" />
 					</div>
 				</div>
-				<!-- /Answer -->
 			</div>
-		</section>
+		</QuizQuestionContent>
+
+		<!-- <section class="w-full mt-6 mb-8">
+			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
+				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
+					_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:
+				</h2>
+				<div class="md:flex md:flex-row w-full mx-auto mb-6">
+					<div
+						v-for="(pv, index) in placeValue"
+						:key="index"
+						class="flex basis-1/4 md:flex-col mb-4"
+					>
+						<div class="w-full flex flex-col justify-center basis-1/2">
+							<h3
+								class="text-center text-gray-500 text-sm font-semibold"
+								v-text="pv.imgAlt"
+							></h3>
+							<div
+								class="flex justify-center items-end md:items-center h-24 gap-2 p-4"
+							>
+								<QuizGuideImg
+									v-for="(th, index) in pv.repeatImg"
+									:key="index"
+									:imgSrc="pv.imgSrc"
+									:imgAlt="pv.imgAlt"
+									:class="pv.width"
+								/>
+							</div>
+						</div>
+						<div
+							class="basis-1/2 flex flex-col justify-end items-center py-4 md:py-0"
+						>
+							<UiDotedInput v-model="pv.value" class="w-16" />
+						</div>
+					</div>
+				</div>
+				<div
+					class="flex items-center justify-around md:justify-center md:gap-6 py-4 border rounded-4xl border-gray-500 md:w-[50%] md:mx-auto"
+				>
+					<p class="flex items-end h-8 text-center">العدد:</p>
+					<div class="text-center">
+						<UiDotedInput v-model="theNumber" class="w-16" />
+					</div>
+				</div>
+			</div>
+		</section> -->
 		<!-- /Question Content -->
 	</article>
 
