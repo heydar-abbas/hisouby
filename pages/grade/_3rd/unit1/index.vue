@@ -1,10 +1,5 @@
 <template>
-	<article class="lg:basis-2/3 w-full lg:h-fit md:w-2xl mx-auto mb-6 lg:mb-0">
-		<header>
-			<h1 class="text-2xl font-semibold py-8 px-4 text-center lg:text-start">
-				الفصل الاول: الأعداد حتى ٩٩٩٩
-			</h1>
-		</header>
+	<GradeArticle title="الفصل الاول: الأعداد حتى ٩٩٩٩">
 		<!-- Quiz Guideline -->
 		<QuizGuideline />
 		<!-- /Quiz Guideline -->
@@ -28,7 +23,7 @@
 				/>
 			</UnitCard>
 		</section>
-	</article>
+	</GradeArticle>
 </template>
 
 <script setup lang="ts">

@@ -1,11 +1,6 @@
 <template>
 	<!-- All grade units -->
-	<article class="lg:basis-2/3 w-full md:w-2xl mx-auto lg:p-4 mb-12">
-		<header>
-			<h1 class="text-3xl font-semibold py-8 text-center lg:text-start">
-				الصف الثالث الابتدائية
-			</h1>
-		</header>
+	<GradeArticle title="الصف الثالث الابتدائية">
 		<!-- Quiz Guideline -->
 		<QuizGuideline />
 		<!-- /Quiz Guideline -->
@@ -92,7 +87,7 @@
 			</UnitCard>
 		</section>
 		<!-- /Units -->
-	</article>
+	</GradeArticle>
 	<!-- /All grade units -->
 </template>
 

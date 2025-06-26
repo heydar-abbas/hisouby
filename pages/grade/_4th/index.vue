@@ -1,19 +1,15 @@
 <template>
 	<!-- All grade units -->
-	<article class="relative lg:basis-2/3 w-full md:w-2xl mx-auto lg:p-4 mb-12">
-		<ComingsoonOverlay />
-		<header>
-			<h1 class="text-3xl font-semibold py-8 text-center lg:text-start">
-				الصف الرابع الابتدائية
-			</h1>
-		</header>
+	<GradeArticle title="الصف الرابع الابتدائية">
 		<!-- Quiz Guideline -->
 		<QuizGuideline />
 		<!-- /Quiz Guideline -->
 
 		<!-- Units -->
-		<section class="grid lg:grid-cols-2 gap-6">
-			<UnitCard title="الفصل الاول">
+		<!-- It's a false until I start implementing it -->
+		<section :class="{ 'grid lg:grid-cols-2 gap-6': false }">
+			<Comingsoon />
+			<!-- <UnitCard title="الفصل الاول">
 				<QuizLink href="#" degree="" />
 				<QuizLink href="#" degree="" />
 				<QuizLink href="#" degree="" />
@@ -83,10 +79,10 @@
 				<QuizLink href="#" degree="" />
 				<QuizLink href="#" degree="" />
 				<QuizLink href="#" degree="" />
-			</UnitCard>
+			</UnitCard> -->
 		</section>
 		<!-- /Units -->
-	</article>
+	</GradeArticle>
 	<!-- /All grade units -->
 </template>
 

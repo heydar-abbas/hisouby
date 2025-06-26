@@ -13,9 +13,7 @@
 			</span>
 		</NuxtLink>
 		<!-- Sidebar links -->
-		<div>
-			<slot></slot>
-		</div>
+		<slot></slot>
 		<!-- /Sidebar links -->
 	</aside>
 </template>
