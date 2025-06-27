@@ -1,12 +1,14 @@
 <template>
-	<li class="cursor-pointer hover:underline hover:font-bold list-disc">
-		<NuxtLink :to="to" class="block py-2" @click.stop="">{{ title }}</NuxtLink>
+	<li
+		class="hover:underline hover:font-bold px-4 not-last:border-b-1 border-b-gray-300"
+	>
+		<NuxtLink :to="to" class="block py-3">{{ title }}</NuxtLink>
 	</li>
 </template>
 
 <script setup lang="ts">
-defineProps<{
-	to: string;
-	title: string;
-}>();
+	defineProps<{
+		to: string;
+		title: string;
+	}>();
 </script>
