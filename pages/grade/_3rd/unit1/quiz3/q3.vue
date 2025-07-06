@@ -1,64 +1,49 @@
 <template>
-	<article class="md:h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
+	<article class="min-h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
 		<!-- Bread crump -->
 		<QuizBreadCrumb
 			unit="الفصل الأول"
-			quize="الدرس الثاني"
+			quize="الدرس الثالث"
 			question="السؤال الثالث"
 			href="/grade/_3rd"
 		/>
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:
-				</h2>
-				<!-- /Question -->
-				<!-- Answer -->
-				<div class="md:flex md:flex-row w-full md:w-[40rem] mx-auto mb-6">
-					<div
-						v-for="(pv, index) in placeValue"
-						:key="index"
-						class="flex basis-1/4 md:flex-col mb-4"
-					>
-						<div class="w-full flex flex-col justify-center basis-1/2">
-							<h3
-								class="text-center text-gray-500 text-sm font-semibold"
-								v-text="pv.imgAlt"
-							></h3>
-							<div
-								class="md:h-32 flex flex-wrap justify-center items-end md:items-center gap-2 p-4"
-							>
-								<QuizGuideImg
-									v-for="(th, index) in pv.repeatImg"
-									:key="index"
-									:imgSrc="pv.imgSrc"
-									:imgAlt="pv.imgAlt"
-									:class="pv.width"
-								/>
-							</div>
-						</div>
-						<div
-							class="basis-1/2 flex flex-col justify-end items-center py-4 md:py-0"
-						>
-							<UiDotedInput v-model="pv.value" class="w-16" />
-						</div>
-					</div>
+		<QuizQuestionContent question="_ اكتب العدد بالصورة التحليلية:">
+			<div class="flex flex-col sm:flex-row gap-4 w-xs sm:w-md md:w-lg mx-auto">
+				<div class="flex items-center justify-center p-4 text-4xl">
+					<p>٨٧٢٣</p>
 				</div>
-				<div
-					class="flex items-center justify-around md:justify-center md:gap-6 py-4 border rounded-4xl border-gray-500 md:w-[50%] md:mx-auto"
-				>
-					<p class="flex items-end h-8 text-center">العدد:</p>
-					<div class="text-center">
-						<UiDotedInput v-model="theNumber" class="w-16" />
-					</div>
+
+				<div class="flex items-center p-4">
+					<span> = </span>
+					<UiDotedInput
+						v-model="placeValue.ones"
+						class="w-full"
+						placeholder="احاد"
+					/>
+					<span>+</span>
+					<UiDotedInput
+						v-model="placeValue.tens"
+						class="w-full"
+						placeholder="عشرات"
+					/>
+					<span>+</span>
+					<UiDotedInput
+						v-model="placeValue.hundreds"
+						class="w-full"
+						placeholder="مئات"
+					/>
+					<span>+</span>
+					<UiDotedInput
+						v-model="placeValue.thousands"
+						class="w-full"
+						placeholder="الوف"
+					/>
 				</div>
-				<!-- /Answer -->
 			</div>
-		</section>
+		</QuizQuestionContent>
 		<!-- /Question Content -->
 	</article>
 
@@ -81,96 +66,69 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: "quiz",
-});
+	definePageMeta({
+		layout: "quiz",
+	});
 
-useHead({
-	title: "الثالث الابتدائية - الفصل الأول",
-});
+	useHead({
+		title: "الثالث الابتدائية - الفصل الأول",
+	});
 
-const { $quizStore } = useNuxtApp();
-const { skipPopup, popup, quiz } = storeToRefs($quizStore);
+	const { $quizStore } = useNuxtApp();
+	const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
-const placeValue = reactive({
-	thousands: {
-		value: "",
-		imgSrc: "/images/quiz/thousands.webp",
-		imgAlt: "ألوف",
-		repeatImg: 1,
-		width: "w-16",
-	},
-	hundreds: {
-		value: "",
-		imgSrc: "/images/quiz/hundreds.png",
-		imgAlt: "مئات",
-		repeatImg: 4,
-		width: "w-12",
-	},
-	tens: {
-		value: "",
-		imgSrc: "/images/quiz/tens.png",
-		imgAlt: "عشرات",
-		repeatImg: 6,
-		width: "w-2",
-	},
-	ones: {
-		value: "",
-		imgSrc: "/images/quiz/ones.png",
-		imgAlt: "آحاد",
-		repeatImg: 9,
-		width: "w-4",
-	},
-});
+	const placeValue = reactive({
+		ones: "",
+		tens: "",
+		hundreds: "",
+		thousands: "",
+	});
 
-const checkResults = (): boolean => {
-	if (
-		placeValue.thousands.value === "1" &&
-		placeValue.hundreds.value === "4" &&
-		placeValue.tens.value === "6" &&
-		placeValue.ones.value === "9" &&
-		theNumber.value === "1469"
-	) {
-		return true;
+	const checkResults = (): boolean => {
+		if (
+			placeValue.ones === "3" &&
+			placeValue.tens === "20" &&
+			placeValue.hundreds === "700" &&
+			placeValue.thousands === "8000"
+		) {
+			return true;
+		}
+		return false;
+	};
+	// In case user enters Arabic numbers
+	const checkArResults = (): boolean => {
+		if (
+			placeValue.ones === "٣" &&
+			placeValue.tens === "٢٠" &&
+			placeValue.hundreds === "٧٠٠" &&
+			placeValue.thousands === "٨٠٠٠"
+		) {
+			return true;
+		}
+		return false;
+	};
+
+	function check(): void {
+		if (checkResults() || checkArResults()) {
+			quiz.value.q3 = 1;
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz3/q4");
+		} else {
+			quiz.value.q3 = 0;
+			$quizStore.setPopup("حاول مرة اخرى", false, "");
+		}
 	}
-	return false;
-};
-// In case user enters Arabic numbers
-const checkArResults = (): boolean => {
-	if (
-		placeValue.thousands.value === "١" &&
-		placeValue.hundreds.value === "٤" &&
-		placeValue.tens.value === "٦" &&
-		placeValue.ones.value === "٩" &&
-		theNumber.value === "١٤٦٩"
-	) {
-		return true;
-	}
-	return false;
-};
-const theNumber = ref<string>("");
 
-function check(): void {
-	if (checkResults() || checkArResults()) {
-		quiz.value.q3 = 1;
-		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q4");
-	} else {
+	function handelSkip(): void {
+		popup.value.open = false;
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz3/q4");
+	}
+
+	function skipQuestion(): void {
 		quiz.value.q3 = 0;
-		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
-}
 
-function handelSkip(): void {
-	popup.value.open = false;
-	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q4");
-}
-
-function skipQuestion(): void {
-	quiz.value.q3 = 0;
-}
-
-onUnmounted(() => {
-	popup.value.open = false;
-	skipPopup.value.open = false;
-});
+	onUnmounted(() => {
+		popup.value.open = false;
+		skipPopup.value.open = false;
+	});
 </script>

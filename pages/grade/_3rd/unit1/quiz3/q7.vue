@@ -3,60 +3,45 @@
 		<!-- Bread crump -->
 		<QuizBreadCrumb
 			unit="الفصل الأول"
-			quize="الدرس الثاني"
+			quize="الدرس الثالث"
 			question="السؤال السابع"
 			href="/grade/_3rd"
 		/>
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<section class="w-full mt-6 mb-8">
-			<div class="w-full p-4 md:px-0 bg-white rounded-xl">
-				<!-- Question -->
-				<h2 class="py-4 md:px-4 mb-6 text-gray-900">
-					_ في المزرعة ١٠٠٠ خروف و ٣٠٠ بقرة, كم حيواناً في المزرعة؟
-				</h2>
-				<!-- /Question -->
-
-				<!-- Answers -->
-				<div class="w-full flex justify-center basis-1/2 my-6 md:my-0">
-					<div class="flex flex-col w-[20rem] gap-4 px-4">
-						<UiInputRadio
-							@click="answer = 1000"
-							forId="answer1"
-							name="answer"
-							title="١٠٠٠ حيوان"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 300"
-							forId="answer2"
-							name="answer"
-							title="٣٠٠ حيوان"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 2700"
-							forId="answer3"
-							name="answer"
-							title="٢٧٠٠ حيوان"
-							:hidden="true"
-						/>
-
-						<UiInputRadio
-							@click="answer = 1300"
-							forId="answer4"
-							name="answer"
-							title="١٣٠٠ حيوان"
-							:hidden="true"
-						/>
-					</div>
-				</div>
-				<!-- /Answers -->
-			</div>
-		</section>
+		<QuizQuestionContent question="_ ما القيمة المكانية للرقم ٤ في العدد ٤٣٢١؟">
+			<QuizMultipleChoiseCard>
+				<UiInputRadio
+					@click="answer = 4"
+					forId="answer1"
+					name="answer"
+					title="٤"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 40"
+					forId="answer2"
+					name="answer"
+					title="٤٠"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 400"
+					forId="answer3"
+					name="answer"
+					title="٤٠٠"
+					:hidden="true"
+				/>
+				<UiInputRadio
+					@click="answer = 4000"
+					forId="answer4"
+					name="answer"
+					title="٤٠٠٠"
+					:hidden="true"
+				/>
+			</QuizMultipleChoiseCard>
+		</QuizQuestionContent>
 		<!-- /Question Content -->
 	</article>
 
@@ -79,40 +64,40 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: "quiz",
-});
+	definePageMeta({
+		layout: "quiz",
+	});
 
-useHead({
-	title: "الثالث الابتدائية - الفصل الأول",
-});
+	useHead({
+		title: "الثالث الابتدائية - الفصل الأول",
+	});
 
-const { $quizStore } = useNuxtApp();
-const { skipPopup, popup, quiz } = storeToRefs($quizStore);
+	const { $quizStore } = useNuxtApp();
+	const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 
-const answer = ref<number>(0);
+	const answer = ref();
 
-function check(): void {
-	if (answer.value === 1300) {
-		quiz.value.q7 = 1;
-		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q8");
-	} else {
-		quiz.value.q7 = 0;
-		$quizStore.setPopup("حاول مرة اخرى", false, "");
+	function check(): void {
+		if (answer.value === 4000) {
+			quiz.value.q7 = 1;
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz3/q8");
+		} else {
+			quiz.value.q7 = 0;
+			$quizStore.setPopup("حاول مرة اخرى", false, "");
+		}
 	}
-}
 
-function handleSkip(): void {
-	popup.value.open = false;
-	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q8");
-}
+	function handleSkip(): void {
+		popup.value.open = false;
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz3/q8");
+	}
 
-function skipQuestion(): void {
-	quiz.value.q7 = 0;
-}
+	function skipQuestion(): void {
+		quiz.value.q7 = 0;
+	}
 
-onUnmounted(() => {
-	popup.value.open = false;
-	skipPopup.value.open = false;
-});
+	onUnmounted(() => {
+		popup.value.open = false;
+		skipPopup.value.open = false;
+	});
 </script>
