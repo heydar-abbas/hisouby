@@ -22,11 +22,17 @@ type Quiz = {
 type Popup = {
 	open: boolean;
 	resetQuiz: boolean;
-	successBtn?: boolean;
-	skip?: boolean;
-	popupTitle?: string;
-	popupBtnText?: string;
 	next: string;
+};
+
+type ResuiltPopup = Popup & {
+	successBtn: boolean;
+	popupTitle: string;
+	popupBtnText: string;
+};
+
+type SkipPopup = Popup & {
+	skip: boolean;
 };
 
 export const useQuizStore = defineStore(
@@ -48,7 +54,7 @@ export const useQuizStore = defineStore(
 			good: 0,
 			poor: 0,
 		});
-		const popup = ref<Popup>({
+		const popup = ref<ResuiltPopup>({
 			open: false,
 			resetQuiz: false,
 			successBtn: false,
@@ -56,7 +62,7 @@ export const useQuizStore = defineStore(
 			popupBtnText: "",
 			next: "",
 		});
-		const skipPopup = ref<Popup>({
+		const skipPopup = ref<SkipPopup>({
 			next: "",
 			open: false,
 			skip: false,
@@ -118,9 +124,11 @@ export const useQuizStore = defineStore(
 		}
 
 		function resetDegreesCounter(): void {
-			(Object.keys(degreesCounter.value) as (keyof Degree)[]).forEach((degree) => {
-				degreesCounter.value[degree] = 0;
-			});
+			(Object.keys(degreesCounter.value) as (keyof Degree)[]).forEach(
+				(degree) => {
+					degreesCounter.value[degree] = 0;
+				}
+			);
 		}
 
 		function resetQuiz(): void {
