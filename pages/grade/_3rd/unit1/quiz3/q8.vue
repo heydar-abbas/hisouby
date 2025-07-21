@@ -94,18 +94,18 @@
 			});
 			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz4/q1", true);
 		} else {
-			quiz.value.q8 = 0;
+			quiz.value.q8 = -1;
 			$quizStore.setPopup("حاول مرة اخرى", false, "");
 		}
 	}
 
 	function handleSkip(): void {
 		popup.value.open = false;
-		// $quizStore.setSkipPopup("/grade/_3rd/unit1/quiz4/q1", true);
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz4/q1", true);
 	}
 
 	function skipQuestion(): void {
-		quiz.value.q8 = 0;
+		quiz.value.q8 = -1;
 		quizes.value.quiz3 = $quizStore.getDegree() as string;
 		$quizStore.setDegreesCounter(units.value);
 		$quizStore.updateQuiz({

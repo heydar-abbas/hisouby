@@ -87,7 +87,7 @@ function check(): void {
 		quiz.value.q5 = 1;
 		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz1/q6");
 	} else {
-		quiz.value.q5 = 0;
+		quiz.value.q5 = -1;
 		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
@@ -98,7 +98,7 @@ function handelSkip(): void {
 }
 
 function skipQuestion(): void {
-	quiz.value.q5 = 0;
+	quiz.value.q5 = -1;
 }
 
 onUnmounted(() => {

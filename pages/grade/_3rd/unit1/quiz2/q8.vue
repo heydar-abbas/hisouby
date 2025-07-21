@@ -96,7 +96,7 @@ function check(): void {
 		});
 		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz3/q1", true);
 	} else {
-		quiz.value.q8 = 0;
+		quiz.value.q8 = -1;
 		$quizStore.setPopup("حاول مرة اخرى", false, "");
 	}
 }
@@ -107,7 +107,7 @@ function handleSkip(): void {
 }
 
 function skipQuestion(): void {
-	quiz.value.q8 = 0;
+	quiz.value.q8 = -1;
 	quizes.value.quiz2 = $quizStore.getDegree() as string;
 	$quizStore.setDegreesCounter(units.value);
 	$quizStore.updateQuiz({

@@ -81,7 +81,7 @@
 			quiz.value.q2 = 1;
 			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz4/q3");
 		} else {
-			quiz.value.q2 = 0;
+			quiz.value.q2 = -1;
 			$quizStore.setPopup("حاول مرة اخرى", false, "");
 		}
 	}
@@ -92,7 +92,7 @@
 	}
 
 	function skipQuestion(): void {
-		quiz.value.q2 = 0;
+		quiz.value.q2 = -1;
 	}
 
 	onUnmounted(() => {

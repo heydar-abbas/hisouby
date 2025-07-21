@@ -6,9 +6,9 @@
         v-for="(q, index) in quiz"
         :key="index"
       >
-        <IconCircle v-show="q === -1" class="w-2.5 mx-0.5 text-gray-900" />
-        <IconCheck v-show="q === 1" class="w-3.5 text-lime-700" />
-        <IconClose v-show="q === 0" class="w-3.5 text-rose-700" />
+        <IconCircle v-if="q === 0" class="w-2.5 mx-0.5 text-gray-900" />
+        <IconCheck v-if="q === 1" class="w-3.5 text-lime-700" />
+        <IconClose v-if="q === -1" class="w-3.5 text-rose-700" />
       </span>
     </div>
   </div>
