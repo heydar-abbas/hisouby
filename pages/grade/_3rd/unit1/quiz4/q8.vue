@@ -1,49 +1,30 @@
 <template>
-	<article class="md:h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
+	<QuizArticle>
 		<!-- Bread crump -->
 		<QuizBreadCrumb
 			unit="الفصل الأول"
-			quize="الدرس الثالث"
+			quize="الدرس الرابع"
 			question="السؤال الثامن"
 			href="/grade/_3rd"
 		/>
 		<!-- /Bread crump -->
 
 		<!-- Question Content -->
-		<QuizQuestionContent question="_ ما اسم مرتبة الرقم ٦ في العدد ١٦٠٠؟">
-			<QuizMultipleChoiseCard>
-				<UiInputRadio
-					@click="answer = 'احاد'"
-					forId="answer1"
-					name="answer"
-					title="احاد"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 'عشرات'"
-					forId="answer2"
-					name="answer"
-					title="عشرات"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 'مئات'"
-					forId="answer3"
-					name="answer"
-					title="مئات"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 'الوف'"
-					forId="answer4"
-					name="answer"
-					title="الوف"
-					:hidden="true"
-				/>
-			</QuizMultipleChoiseCard>
+		<QuizQuestionContent
+			question="باع أحد المتاجر ستة الاف واربعمئة وسبعة وسبعين طبق بيض, أكتب هذا العدد بالأرقام."
+		>
+			<div class="md:w-xl mx-auto">
+				<div class="w-full flex justify-center p-4">
+					<UiDotedInput
+						v-model="answer"
+						class="w-32"
+						placeholder="العدد بالأرقام"
+					/>
+				</div>
+			</div>
 		</QuizQuestionContent>
 		<!-- /Question Content -->
-	</article>
+	</QuizArticle>
 
 	<!-- Quize footer -->
 	<QuizFooter
@@ -80,9 +61,9 @@
 	const answer = ref("");
 
 	function check(): void {
-		if (answer.value === "مئات") {
+		if (answer.value === "6477" || answer.value === "٦٤٧٧") {
 			quiz.value.q8 = 1;
-			quizes.value.quiz3 = $quizStore.getDegree() as string;
+			quizes.value.quiz4 = $quizStore.getDegree() as string;
 			$quizStore.setDegreesCounter(units.value);
 			$quizStore.updateQuiz({
 				g3: {
@@ -92,7 +73,7 @@
 					},
 				},
 			});
-			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz4/q1", true);
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz5/q1", true);
 		} else {
 			quiz.value.q8 = 0;
 			$quizStore.setPopup("حاول مرة اخرى", false, "");
@@ -101,12 +82,12 @@
 
 	function handleSkip(): void {
 		popup.value.open = false;
-		// $quizStore.setSkipPopup("/grade/_3rd/unit1/quiz4/q1", true);
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz5/q1", true);
 	}
 
 	function skipQuestion(): void {
 		quiz.value.q8 = 0;
-		quizes.value.quiz3 = $quizStore.getDegree() as string;
+		quizes.value.quiz4 = $quizStore.getDegree() as string;
 		$quizStore.setDegreesCounter(units.value);
 		$quizStore.updateQuiz({
 			g3: {

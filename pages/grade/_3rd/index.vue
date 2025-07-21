@@ -20,6 +20,10 @@
 					href="/grade/_3rd/unit1/quiz3/q1"
 					:degree="grades?.g3?.unit1?.quiz3"
 				/>
+				<QuizLink
+					href="/grade/_3rd/unit1/quiz4/q1"
+					:degree="grades?.g3?.unit1?.quiz4"
+				/>
 			</UnitCard>
 
 			<UnitCard title="الفصل الثاني">
@@ -92,14 +96,14 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: "3rd-grade",
-});
+	definePageMeta({
+		layout: "3rd-grade",
+	});
 
-useHead({
-	title: "الثالث الابتدائية | الحيسوبي",
-});
+	useHead({
+		title: "الثالث الابتدائية | الحيسوبي",
+	});
 
-const { $userStore } = useNuxtApp();
-const grades = computed(() => $userStore?.userInfo?.grades);
+	const { $userStore } = useNuxtApp();
+	const grades = computed(() => $userStore?.userInfo?.grades);
 </script>

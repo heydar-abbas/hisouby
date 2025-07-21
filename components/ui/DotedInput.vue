@@ -1,7 +1,7 @@
 <template>
 	<input
 		type="text"
-		class="px-2 text-center border-b-2 border-dotted border-gray-900 text-gray-900 focus:outline-0"
+		class="px-2 text-center border-b-2 border-dotted border-gray-900 text-gray-900 focus:outline-0 placeholder:text-sm"
 		v-model="model"
 		ref="input"
 	/>

@@ -5,7 +5,7 @@
 		<!-- /Quiz Guideline -->
 
 		<section class="w-full xl:w-3xl mx-auto p-4 mb-12">
-			<UnitCard title="">
+			<QuizUnitCard>
 				<QuizCard
 					title="مفهوم الألف والعد بالألوف"
 					link="/grade/_3rd/unit1/quiz1/q1"
@@ -21,20 +21,25 @@
 					link="/grade/_3rd/unit1/quiz3/q1"
 					:degree="grades?.g3?.unit1?.quiz3"
 				/>
-			</UnitCard>
+				<QuizCard
+					title="قراءة العدد وكتابته"
+					link="/grade/_3rd/unit1/quiz4/q1"
+					:degree="grades?.g3?.unit1?.quiz4"
+				/>
+			</QuizUnitCard>
 		</section>
 	</GradeArticle>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: "3rd-grade",
-});
+	definePageMeta({
+		layout: "3rd-grade",
+	});
 
-useHead({
-	title: "الثالث الابتدائية | الحيسوبي",
-});
+	useHead({
+		title: "الثالث الابتدائية | الحيسوبي",
+	});
 
-const { $userStore } = useNuxtApp();
-const grades = computed(() => $userStore?.userInfo?.grades);
+	const { $userStore } = useNuxtApp();
+	const grades = computed(() => $userStore?.userInfo?.grades);
 </script>
