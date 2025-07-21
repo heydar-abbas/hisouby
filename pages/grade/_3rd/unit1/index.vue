@@ -26,6 +26,11 @@
 					link="/grade/_3rd/unit1/quiz4/q1"
 					:degree="grades?.g3?.unit1?.quiz4"
 				/>
+				<QuizCard
+					title="مقارنة الأعداد"
+					link="/grade/_3rd/unit1/quiz5/q1"
+					:degree="grades?.g3?.unit1?.quiz5"
+				/>
 			</QuizUnitCard>
 		</section>
 	</GradeArticle>
