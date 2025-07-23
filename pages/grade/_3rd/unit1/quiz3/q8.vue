@@ -81,18 +81,20 @@
 
 	function check(): void {
 		if (answer.value === "مئات") {
-			quiz.value.q8 = 1;
-			quizes.value.quiz3 = $quizStore.getDegree() as string;
-			$quizStore.setDegreesCounter(units.value);
-			$quizStore.updateQuiz({
-				g3: {
-					...units.value,
-					unit1: {
-						...quizes.value,
-					},
-				},
-			});
 			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz4/q1", true);
+			quiz.value.q8 = 1;
+			if (userInfo.value) {
+				quizes.value.quiz3 = $quizStore.getDegree();
+				$quizStore.setDegreesCounter(units.value);
+				$quizStore.updateQuiz({
+					g3: {
+						...units.value,
+						unit1: {
+							...quizes.value,
+						},
+					},
+				});
+			}
 		} else {
 			quiz.value.q8 = -1;
 			$quizStore.setPopup("حاول مرة اخرى", false, "");
@@ -106,16 +108,18 @@
 
 	function skipQuestion(): void {
 		quiz.value.q8 = -1;
-		quizes.value.quiz3 = $quizStore.getDegree() as string;
-		$quizStore.setDegreesCounter(units.value);
-		$quizStore.updateQuiz({
-			g3: {
-				...units.value,
-				unit1: {
-					...quizes.value,
+		if (userInfo.value) {
+			quizes.value.quiz3 = $quizStore.getDegree();
+			$quizStore.setDegreesCounter(units.value);
+			$quizStore.updateQuiz({
+				g3: {
+					...units.value,
+					unit1: {
+						...quizes.value,
+					},
 				},
-			},
-		});
+			});
+		}
 	}
 
 	onUnmounted(() => {
