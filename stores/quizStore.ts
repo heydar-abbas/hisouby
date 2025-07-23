@@ -138,10 +138,6 @@ export const useQuizStore = defineStore(
 		}
 
 		function updateQuiz(grade: any): void {
-			if (!authStore?.isLoggedIn) {
-				console.log("User document reference not found.");
-				return;
-			}
 			const auth = getAuth(firebaseApp.value);
 			const uid = auth.currentUser?.uid as string;
 			const userDocRef = doc(db.value, "users", uid);
@@ -159,7 +155,7 @@ export const useQuizStore = defineStore(
 		function setPopup(
 			title: string,
 			successBtn: boolean,
-			next: string,
+			next: string = "",
 			resQuiz: boolean = false
 		): void {
 			popup.value.popupTitle = title;
