@@ -9,15 +9,15 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-	degreeCount: number;
-	title: string;
-	degree: string;
-}>();
+	defineProps<{
+		degreeCount: number;
+		title: string;
+		degree: string;
+	}>();
 
-const colorList = reactive<any>({
-	excellent: "text-lime-600 bg-lime-200",
-	good: "text-amber-600 bg-amber-200",
-	poor: "text-rose-600 bg-rose-200",
-});
+	const colorList = reactive<any>({
+		excellent: "text-lime-600 bg-lime-100",
+		good: "text-amber-600 bg-amber-100",
+		poor: "text-rose-600 bg-rose-100",
+	});
 </script>

@@ -28,6 +28,10 @@
 					href="/grade/_3rd/unit1/quiz5/q1"
 					:degree="grades?.g3?.unit1?.quiz5"
 				/>
+				<QuizLink
+					href="/grade/_3rd/unit1/quiz6/q1"
+					:degree="grades?.g3?.unit1?.quiz6"
+				/>
 			</UnitCard>
 
 			<UnitCard title="الفصل الثاني">

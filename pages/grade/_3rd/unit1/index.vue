@@ -31,6 +31,11 @@
 					link="/grade/_3rd/unit1/quiz5/q1"
 					:degree="grades?.g3?.unit1?.quiz5"
 				/>
+				<QuizCard
+					title="ترتيب الأعداد"
+					link="/grade/_3rd/unit1/quiz6/q1"
+					:degree="grades?.g3?.unit1?.quiz6"
+				/>
 			</QuizUnitCard>
 		</section>
 	</GradeArticle>
