@@ -11,7 +11,7 @@
 
 		<!-- Question Content -->
 		<QuizQuestionContent
-			question="شارك في رياضة ألعاب القوى 6775 رياضياً, أُقرب المشاركين الى أقرب عشرة:"
+			question="شارك في رياضة ألعاب القوى ٦٧٧٥ رياضياً, أُقرب المشاركين الى أقرب عشرة:"
 		>
 			<div class="sm:w-lg mx-auto flex justify-center">
 				<UiDotedInput v-model="answer" class="w-28 text-2xl" />

@@ -11,7 +11,7 @@
 
 		<!-- Question Content -->
 		<QuizQuestionContent
-			question="حضر المباراة 5028 شخصا, أُقرب عدد الحضور الى أقرب مئة:"
+			question="حضر المباراة ٥٠٢٨ شخصا, أُقرب عدد الحضور الى أقرب مئة:"
 		>
 			<div class="sm:w-lg mx-auto flex justify-center">
 				<UiDotedInput v-model="answer" class="w-28 text-2xl" />
