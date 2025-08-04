@@ -36,6 +36,11 @@
 					link="/grade/_3rd/unit1/quiz6/q1"
 					:degree="grades?.g3?.unit1?.quiz6"
 				/>
+				<QuizCard
+					title="التقريب الى أقرب عشرة والى أقرب مئة"
+					link="/grade/_3rd/unit1/quiz7/q1"
+					:degree="grades?.g3?.unit1?.quiz7"
+				/>
 			</QuizUnitCard>
 		</section>
 	</GradeArticle>
