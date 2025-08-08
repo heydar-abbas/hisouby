@@ -3,7 +3,7 @@
 		<!-- Bread crump -->
 		<QuizBreadCrumb
 			unit="الفصل الأول"
-			quize="الدرس الرابع"
+			quize="الدرس الثامن"
 			question="السؤال السابع"
 			href="/grade/_3rd"
 		/>
@@ -11,39 +11,57 @@
 
 		<!-- Question Content -->
 		<QuizQuestionContent
-			question="بلغ عدد المسافرين من مطار بغداد الدولي في أحد الأيام ٨٦٥٢ مسافراً, أكتب عدد المسافرين بجدول القيمة المكانية وأقرأهُ."
+			question="في المزرعة ١٤٢٥ نخلةً, و ١١٤٥ شجرة رمانٍ أيهما أكثر, النخلات أم عدد أشجار الرمان؟"
 		>
-			<div class="md:w-xl mx-auto">
-				<div class="w-full flex justify-center p-4">
+			<div class="w-full grid sm:grid-cols-2 gap-4 md:p-4 lg:w-2xl mx-auto">
+				<div class="w-full">
 					<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
 						<tr>
 							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="ones"
-								/>
+								<UiTextInput class="w-full border-none focus:outline-0" />
 							</td>
 							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="tens"
-								/>
+								<UiTextInput class="w-full border-none focus:outline-0" />
 							</td>
 							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="hundreds"
-								/>
+								<UiTextInput class="w-full border-none focus:outline-0" />
 							</td>
 							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="thousands"
-								/>
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
 							</td>
 						</tr>
 					</QuizTable>
 				</div>
+				<QuizMultipleChoiseCard>
+					<UiInputRadio
+						@click="answer = 'النخلات'"
+						forId="answer1"
+						name="answer"
+						title="النخلات"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 'أشجار الرمان'"
+						forId="answer2"
+						name="answer"
+						title="أشجار الرمان"
+						:hidden="true"
+					/>
+				</QuizMultipleChoiseCard>
 			</div>
 		</QuizQuestionContent>
 		<!-- /Question Content -->
@@ -78,49 +96,21 @@
 
 	const { $quizStore } = useNuxtApp();
 	const { skipPopup, popup, quiz } = storeToRefs($quizStore);
-
-	const thousands = ref("");
-	const hundreds = ref("");
-	const tens = ref("");
-	const ones = ref("");
-
-	const checkResults = (): boolean => {
-		if (
-			thousands.value === "8" &&
-			hundreds.value === "6" &&
-			tens.value === "5" &&
-			ones.value === "2"
-		) {
-			return true;
-		}
-		return false;
-	};
-	// In case user enters Arabic numbers
-	const checkArResults = (): boolean => {
-		if (
-			thousands.value === "٨" &&
-			hundreds.value === "٦" &&
-			tens.value === "٥" &&
-			ones.value === "٢"
-		) {
-			return true;
-		}
-		return false;
-	};
+	let answer = ref("");
 
 	function check(): void {
-		if (checkResults() || checkArResults()) {
+		if (answer.value === "النخلات") {
 			quiz.value.q7 = 1;
-			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz4/q8");
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz8/q8");
 		} else {
 			quiz.value.q7 = -1;
-			$quizStore.setPopup("حاول مرة اخرى", false, "");
+			$quizStore.setPopup("حاول مرة اخرى", false);
 		}
 	}
 
 	function handelSkip(): void {
 		popup.value.open = false;
-		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz4/q8");
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz8/q8");
 	}
 
 	function skipQuestion(): void {

@@ -41,6 +41,11 @@
 					link="/grade/_3rd/unit1/quiz7/q1"
 					:degree="grades?.g3?.unit1?.quiz7"
 				/>
+				<QuizCard
+					title="خطة حل المسألة ( أنشىء جدولاً )"
+					link="/grade/_3rd/unit1/quiz8/q1"
+					:degree="grades?.g3?.unit1?.quiz8"
+				/>
 			</QuizUnitCard>
 		</section>
 	</GradeArticle>

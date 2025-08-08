@@ -11,10 +11,57 @@
 
 		<!-- Question Content -->
 		<QuizQuestionContent
-			question="شارك في رياضة ألعاب القوى ٦٧٧٥ رياضياً, أُقرب المشاركين الى أقرب عشرة:"
+			question="يبعد منزل جبار ٢٨٢٥ متراً عن المدرسة, ويبعد منزل ناصر ١٩٣٥ متراً عنها. أيهما منزله أقرب إلى المدرسة؟"
 		>
-			<div class="sm:w-lg mx-auto flex justify-center">
-				<UiDotedInput v-model="answer" class="w-28 text-2xl" />
+			<div class="w-full grid sm:grid-cols-2 gap-4 md:p-4 lg:w-2xl mx-auto">
+				<div class="w-full">
+					<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
+						<tr>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+						</tr>
+						<tr>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+							<td class="border-1 border-gray-400">
+								<UiTextInput class="w-full border-none focus:outline-0" />
+							</td>
+						</tr>
+					</QuizTable>
+				</div>
+				<QuizMultipleChoiseCard>
+					<UiInputRadio
+						@click="answer = 'جبار'"
+						forId="answer1"
+						name="answer"
+						title="جبار"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 'ناصر'"
+						forId="answer2"
+						name="answer"
+						title="ناصر"
+						:hidden="true"
+					/>
+				</QuizMultipleChoiseCard>
 			</div>
 		</QuizQuestionContent>
 		<!-- /Question Content -->
@@ -52,14 +99,14 @@
 	const { skipPopup, popup, quiz } = storeToRefs($quizStore);
 	const units = ref(userInfo.value?.grades?.g3);
 	const quizes = ref(userInfo.value?.grades?.g3?.unit1);
-	const answer = ref("");
+	let answer = ref("");
 
 	function check(): void {
-		if (answer.value === "6780" || answer.value === "٦٧٨٠") {
-			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz8/q1", true);
+		if (answer.value === "ناصر") {
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1", true);
 			quiz.value.q8 = 1;
 			if (userInfo.value) {
-				quizes.value.quiz7 = $quizStore.getDegree();
+				quizes.value.quiz8 = $quizStore.getDegree();
 				$quizStore.setDegreesCounter(units.value);
 				$quizStore.updateQuiz({
 					g3: {
@@ -78,13 +125,13 @@
 
 	function handelSkip(): void {
 		popup.value.open = false;
-		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz8/q1", true);
+		$quizStore.setSkipPopup("/grade/_3rd/unit1", true);
 	}
 
 	function skipQuestion(): void {
 		quiz.value.q8 = -1;
 		if (userInfo.value) {
-			quizes.value.quiz7 = $quizStore.getDegree();
+			quizes.value.quiz8 = $quizStore.getDegree();
 			$quizStore.setDegreesCounter(units.value);
 			$quizStore.updateQuiz({
 				g3: {

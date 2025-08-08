@@ -17,7 +17,7 @@
 				</div>
 
 				<div class="w-full flex justify-center p-4">
-					<QuizTable :tHeades="['احاد', 'عشرات', 'مئات', 'الوف']">
+					<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
 						<tr>
 							<td class="border-1 border-gray-400">
 								<UiTextInput

@@ -7,5 +7,5 @@
 </template>
 
 <script setup lang="ts">
-	const model = defineModel<string | null>({ required: true });
+	const model = defineModel<string | null>({ required: false });
 </script>

@@ -3,10 +3,10 @@
 		<thead>
 			<tr>
 				<th
-					v-for="(th, index) in tHeades"
+					v-for="(th, index) in tHeads"
 					:key="index"
 					v-text="th"
-					class="p-2 border-1 border-gray-400 bg-amber-300"
+					class="text-sm md:text-base border-1 border-gray-400 bg-amber-300"
 				></th>
 			</tr>
 		</thead>
@@ -18,6 +18,6 @@
 
 <script setup lang="ts">
 	defineProps<{
-		tHeades: string[];
+		tHeads: string[];
 	}>();
 </script>
