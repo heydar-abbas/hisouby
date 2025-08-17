@@ -15,7 +15,7 @@
 					class="grid grid-cols-1 md:grid-cols-2 p-4 md:px-0 lg:w-2xl mx-auto"
 				>
 					<!-- Level ProgressBar -->
-					<GradeLevelProgressBar title="المستوى" :value="50" />
+					<GradeLevelProgressBar :value="50" />
 					<!-- /Level ProgressBar -->
 
 					<!-- Degree Counter -->
@@ -60,25 +60,25 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	middleware: "auth",
-});
+	definePageMeta({
+		middleware: "auth",
+	});
 
-useHead({
-	title: "الملف الشخصي",
-});
+	useHead({
+		title: "الملف الشخصي",
+	});
 
-const { $userStore } = useNuxtApp();
+	const { $userStore } = useNuxtApp();
 
-let userInfo = ref<any>();
-let excellent = ref<number>(0);
-let good = ref<number>(0);
-let poor = ref<number>(0);
+	let userInfo = ref<any>();
+	let excellent = ref<number>(0);
+	let good = ref<number>(0);
+	let poor = ref<number>(0);
 
-onMounted(() => {
-	userInfo.value = $userStore?.userInfo || null;
-	excellent.value = userInfo.value?.degreeCounter?.excellent || 0;
-	good.value = userInfo.value?.degreeCounter?.good || 0;
-	poor.value = userInfo.value?.degreeCounter?.poor || 0;
-});
+	onMounted(() => {
+		userInfo.value = $userStore?.userInfo || null;
+		excellent.value = userInfo.value?.degreeCounter?.excellent || 0;
+		good.value = userInfo.value?.degreeCounter?.good || 0;
+		poor.value = userInfo.value?.degreeCounter?.poor || 0;
+	});
 </script>
