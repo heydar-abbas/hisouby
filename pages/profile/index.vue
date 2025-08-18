@@ -15,7 +15,7 @@
 					class="grid grid-cols-1 md:grid-cols-2 p-4 md:px-0 lg:w-2xl mx-auto"
 				>
 					<!-- Level ProgressBar -->
-					<GradeLevelProgressBar :value="50" />
+					<GradeLevelProgressBar :userLevel="userLevel" />
 					<!-- /Level ProgressBar -->
 
 					<!-- Degree Counter -->
@@ -71,12 +71,14 @@
 	const { $userStore } = useNuxtApp();
 
 	let userInfo = ref<any>();
+	let userLevel = ref<number>(0);
 	let excellent = ref<number>(0);
 	let good = ref<number>(0);
 	let poor = ref<number>(0);
 
 	onMounted(() => {
 		userInfo.value = $userStore?.userInfo || null;
+		userLevel.value = userInfo.value?.userLevel || 0;
 		excellent.value = userInfo.value?.degreeCounter?.excellent || 0;
 		good.value = userInfo.value?.degreeCounter?.good || 0;
 		poor.value = userInfo.value?.degreeCounter?.poor || 0;

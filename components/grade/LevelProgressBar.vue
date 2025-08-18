@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	defineProps<{
-		value: number;
+		userLevel: number;
 	}>();
 </script>
 
@@ -8,9 +8,9 @@
 	<div class="p-4 text-gray-900">
 		<label class="flex items-center justify-between">
 			<div>مستوى التقدم:</div>
-			<div>{{ value }}%</div>
+			<div>{{ userLevel }}%</div>
 		</label>
-		<progress max="100" :value="value"></progress>
+		<progress max="100" :value="userLevel"></progress>
 	</div>
 </template>
 

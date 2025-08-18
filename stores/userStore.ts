@@ -18,31 +18,44 @@ export const useUserStore = defineStore(
     const auth = getAuth($firebaseApp);
 
     /** States **/
-    const userInfo = ref<any>(null);
-    const successMsg = ref<string | null>("");
-    const avatarListDropDown = ref<boolean>(false);
+    let userInfo = ref<any>(null);
+    let successMsg = ref<string | null>("");
+    let avatarListDropDown = ref<boolean>(false);
 
     /** Actions **/
     function updateUser(data: any) {
-      const uid = auth.currentUser?.uid as string;
-      const userDocRef = doc($db, "users", uid);
-
-      updateDoc(userDocRef, {
-        name: data.name,
-        avatar: data.avatar,
-      });
-
+      let uid = auth.currentUser?.uid as string;
+      let userDocRef = doc($db, "users", uid);
+      updateDoc(userDocRef, data);
       fetchUserInfo(uid);
-      navigateTo("/profile");
       successMsg.value = "تم تحديث المعلومات";
       setTimeout(() => {
         successMsg.value = "";
       }, 3000);
     }
 
+    function getUserLevel(units: any, numberOfUnits: number): number {
+      let doneCounter = 0;
+      if (!units || numberOfUnits === 0) return 0; // Avoid division by zero
+      for (let u in units) {
+        if (u === "done") continue;
+        if (units[u].done) doneCounter++;
+      }
+      return Math.ceil((100 / numberOfUnits) * doneCounter);
+    }
+
+    function setUserLevel(units: any, numberOfUnits: number) {
+      let uid = auth.currentUser?.uid as string;
+      let userDocRef = doc($db, "users", uid);
+      updateDoc(userDocRef, {
+        userLevel: getUserLevel(units, numberOfUnits),
+      });
+      fetchUserInfo(uid);
+    }
+
     function fetchUserInfo(userId: string) {
       let data: any = {};
-      const q = query(collection($db, "users"), where("uid", "==", userId));
+      let q = query(collection($db, "users"), where("uid", "==", userId));
       onSnapshot(q, (querySnapshot) => {
         userInfo.value = querySnapshot.docs[0].data();
         data = userInfo.value;
@@ -55,6 +68,7 @@ export const useUserStore = defineStore(
       successMsg,
       avatarListDropDown,
       updateUser,
+      setUserLevel,
       fetchUserInfo,
     };
   },

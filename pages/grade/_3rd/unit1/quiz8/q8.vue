@@ -103,7 +103,7 @@
 
 	function check(): void {
 		if (answer.value === "ناصر") {
-			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1", true);
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd", true);
 			quiz.value.q8 = 1;
 			if (userInfo.value) {
 				quizes.value.quiz8 = $quizStore.getDegree();
@@ -113,9 +113,11 @@
 						...units.value,
 						unit1: {
 							...quizes.value,
+							done: true,
 						},
 					},
 				});
+				$userStore.setUserLevel(units.value, 9);
 			}
 		} else {
 			quiz.value.q8 = -1;
@@ -125,7 +127,7 @@
 
 	function handelSkip(): void {
 		popup.value.open = false;
-		$quizStore.setSkipPopup("/grade/_3rd/unit1", true);
+		$quizStore.setSkipPopup("/grade/_3rd", true);
 	}
 
 	function skipQuestion(): void {
@@ -138,9 +140,11 @@
 					...units.value,
 					unit1: {
 						...quizes.value,
+						done: true,
 					},
 				},
 			});
+			$userStore.setUserLevel(units.value, 9);
 		}
 	}
 

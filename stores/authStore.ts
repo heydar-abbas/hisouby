@@ -50,6 +50,7 @@ export const useAuthStore = defineStore(
               good: 0,
               poor: 0,
             },
+            userLevel: 0,
             createdAt: Timestamp.fromDate(new Date()),
           });
           console.log("New user created");

@@ -29,36 +29,40 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	middleware: "auth",
-});
+	definePageMeta({
+		middleware: "auth",
+	});
 
-useHead({
-	title: "تعديل الملف الشخصي",
-});
+	useHead({
+		title: "تعديل الملف الشخصي",
+	});
 
-const { $userStore } = useNuxtApp();
-const { avatarListDropDown, userInfo } = storeToRefs($userStore);
+	const { $userStore } = useNuxtApp();
+	const { avatarListDropDown, userInfo } = storeToRefs($userStore);
 
-const form = reactive({
-	name: "",
-	avatar: "",
-});
+	const form = reactive({
+		name: "",
+		avatar: "",
+	});
 
-onMounted(() => {
-	form.name = userInfo?.value.name || "";
-	form.avatar = userInfo?.value.avatar || "";
-});
+	onMounted(() => {
+		form.name = userInfo?.value.name || "";
+		form.avatar = userInfo?.value.avatar || "";
+	});
 
-function changeAvatar(event: any) {
-	form.avatar = `/images/avatars/${event}`;
-}
+	function changeAvatar(event: any) {
+		form.avatar = `/images/avatars/${event}`;
+	}
 
-function submitUpdate() {
-	$userStore.updateUser(form);
-}
+	function submitUpdate() {
+		$userStore.updateUser({
+			name: form.name,
+			avatar: form.avatar,
+		});
+		navigateTo("/profile");
+	}
 
-onUnmounted(() => {
-	avatarListDropDown.value = false;
-});
+	onUnmounted(() => {
+		avatarListDropDown.value = false;
+	});
 </script>

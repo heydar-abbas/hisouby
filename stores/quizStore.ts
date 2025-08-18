@@ -83,22 +83,23 @@ export const useQuizStore = defineStore(
 		function setDegreesCounter(units: any): void {
 			resetDegreesCounter();
 			for (const u in units) {
-				if (typeof units[u] === "object") {
-					for (const q in units[u]) {
-						switch (units[u][q]) {
-							case "excellent":
-								degreesCounter.value.excellent += 1;
-								break;
-							case "good":
-								degreesCounter.value.good += 1;
-								break;
-							case "poor":
-								degreesCounter.value.poor += 1;
-								break;
-
-							default:
-								break;
-						}
+				// Skip the 'done' property
+				if (u === "done") continue;
+				for (const q in units[u]) {
+					// Skip the 'done' property
+					if (q === "done") continue;
+					switch (units[u][q]) {
+						case "excellent":
+							degreesCounter.value.excellent++;
+							break;
+						case "good":
+							degreesCounter.value.good++;
+							break;
+						case "poor":
+							degreesCounter.value.poor++;
+							break;
+						default:
+							break;
 					}
 				}
 			}
