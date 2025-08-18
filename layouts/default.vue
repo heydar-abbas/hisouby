@@ -4,7 +4,7 @@
 			<AppNav />
 		</header>
 
-		<main class="min-h-screen bg-gray-50">
+		<main class="min-h-[calc(100dvh-246px)]">
 			<slot></slot>
 		</main>
 
