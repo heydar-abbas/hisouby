@@ -1,65 +1,67 @@
 <template>
-	<div class="relative w-full p-4 md:w-2xl lg:w-4xl xl:w-6xl mx-auto md:p-0">
+	<div class="w-full p-2 md:px-0 pt-24 md:w-2xl lg:w-3xl mx-auto">
 		<!-- Notification -->
 		<UiSuccessMsg v-show="$userStore.successMsg" :msg="$userStore.successMsg" />
 		<!-- /Notification -->
 
-		<!-- User info -->
-		<UserInfo :userInfo="userInfo" />
-		<!-- /User info -->
+		<div class="relative flex flex-col border-2 border-gray-500 rounded-2xl">
+			<!-- User info -->
+			<ProfileUserInfo :userInfo="userInfo" />
+			<!-- /User info -->
 
-		<!-- User achievements -->
-		<div class="">
-			<div class="w-full">
-				<div
-					class="grid grid-cols-1 md:grid-cols-2 p-4 md:px-0 lg:w-2xl mx-auto"
-				>
-					<!-- Level ProgressBar -->
-					<GradeLevelProgressBar :userLevel="userLevel" />
-					<!-- /Level ProgressBar -->
+			<!-- User achievements -->
+			<ProfileUserAchievements>
+				<template #progress_bar>
+					<!-- Level Progress Bar -->
+					<ProfileLevelProgressBar :userLevel="userLevel" />
+					<!-- /Level Progress Bar -->
 
 					<!-- Degree Counter -->
-					<ul class="p-4 flex flex-wrap gap-2">
-						<GradeDegreeCounter
+					<div class="p-4 flex">
+						<ProfileDegreeCounter
 							:degreeCount="excellent"
 							title="ممتاز"
 							degree="excellent"
 						/>
-
-						<GradeDegreeCounter :degreeCount="good" title="جيد" degree="good" />
-
-						<GradeDegreeCounter
+						<ProfileDegreeCounter
+							:degreeCount="good"
+							title="جيد"
+							degree="good"
+						/>
+						<ProfileDegreeCounter
 							:degreeCount="poor"
 							title="ضعيف"
 							degree="poor"
 						/>
-					</ul>
+					</div>
 					<!-- /Degree Counter -->
-				</div>
-			</div>
+				</template>
 
-			<!-- Grads -->
-			<ProfileGradesCard>
-				<ProfileGradeList badgeImage="" title="الاول ابتدائية" />
-				<ProfileGradeList badgeImage="" title="الثاني ابتدائية" />
-				<ProfileGradeList badgeImage="" title="الثالث ابتدائية" />
-				<ProfileGradeList badgeImage="" title="الرابع ابتدائية" />
-				<ProfileGradeList badgeImage="" title="الخامس ابتدائية" />
-				<ProfileGradeList badgeImage="" title="السادس ابتدائية" />
-				<ProfileGradeList badgeImage="" title="الاول متوسطة" />
-				<ProfileGradeList badgeImage="" title="الثاني متوسطة" />
-				<ProfileGradeList badgeImage="" title="الثالث متوسطة" />
-				<ProfileGradeList badgeImage="" title="الرابع اعدادي" />
-				<ProfileGradeList badgeImage="" title="الخامس اعدادي" />
-				<ProfileGradeList badgeImage="" title="السادس اعدادي" />
-			</ProfileGradesCard>
-			<!-- /Grads -->
+				<!-- Grads -->
+				<ProfileGradesCard>
+					<ProfileGradeList badgeImage="" title="الاول ابتدائية" />
+					<ProfileGradeList badgeImage="" title="الثاني ابتدائية" />
+					<ProfileGradeList badgeImage="" title="الثالث ابتدائية" />
+					<ProfileGradeList badgeImage="" title="الرابع ابتدائية" />
+					<ProfileGradeList badgeImage="" title="الخامس ابتدائية" />
+					<ProfileGradeList badgeImage="" title="السادس ابتدائية" />
+					<ProfileGradeList badgeImage="" title="الاول متوسطة" />
+					<ProfileGradeList badgeImage="" title="الثاني متوسطة" />
+					<ProfileGradeList badgeImage="" title="الثالث متوسطة" />
+					<ProfileGradeList badgeImage="" title="الرابع اعدادي" />
+					<ProfileGradeList badgeImage="" title="الخامس اعدادي" />
+					<ProfileGradeList badgeImage="" title="السادس اعدادي" />
+				</ProfileGradesCard>
+				<!-- /Grads -->
+			</ProfileUserAchievements>
+			<!-- /User achievements -->
 		</div>
-		<!-- /User achievements -->
 	</div>
 </template>
 
 <script setup lang="ts">
+	import { ProfileUserInfo } from "#components";
+
 	definePageMeta({
 		middleware: "auth",
 	});
