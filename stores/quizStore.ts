@@ -43,12 +43,12 @@ export const useQuizStore = defineStore(
 		const firebaseApp = computed(() => useNuxtApp().$firebaseApp);
 
 		/** Stores **/
-		const authStore = useAuthStore();
 		const userStore = useUserStore();
 		const { userInfo } = storeToRefs(userStore);
 
 		/** States **/
 		const grades = ref(userInfo.value?.grades);
+		const NUMBER_OF_UNITS = ref<number>(0);
 		const degreesCounter = ref<Degree>({
 			excellent: 0,
 			good: 0,
@@ -173,6 +173,7 @@ export const useQuizStore = defineStore(
 		}
 
 		return {
+			NUMBER_OF_UNITS,
 			degreesCounter,
 			quiz,
 			popup,

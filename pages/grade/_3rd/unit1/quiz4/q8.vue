@@ -55,7 +55,7 @@
 
 	const { $userStore, $quizStore } = useNuxtApp();
 	const { userInfo } = storeToRefs($userStore);
-	const { skipPopup, popup, quiz } = storeToRefs($quizStore);
+	const { skipPopup, popup, quiz, NUMBER_OF_UNITS } = storeToRefs($quizStore);
 	const units = ref(userInfo.value?.grades?.g3);
 	const quizes = ref(userInfo.value?.grades?.g3?.unit1);
 	const answer = ref("");
@@ -75,6 +75,7 @@
 						},
 					},
 				});
+				$userStore.setUserLevel(units.value, NUMBER_OF_UNITS.value);
 			}
 		} else {
 			quiz.value.q8 = -1;
@@ -100,6 +101,7 @@
 					},
 				},
 			});
+			$userStore.setUserLevel(units.value, NUMBER_OF_UNITS.value);
 		}
 	}
 

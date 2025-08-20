@@ -34,21 +34,27 @@ export const useUserStore = defineStore(
       }, 3000);
     }
 
-    function getUserLevel(units: any, numberOfUnits: number): number {
+    function getUserLevel(units: any, numOfUnits: number): number {
       let doneCounter = 0;
-      if (!units || numberOfUnits === 0) return 0; // Avoid division by zero
+      if (!units || numOfUnits === 0) return 0; // Avoid division by zero
       for (let u in units) {
         if (u === "done") continue;
+        for (let q in units[u]) {
+          if (q === "done") continue;
+          if (units[u][q] === "") return 0; // Avoid incomplete unit
+        }
         if (units[u].done) doneCounter++;
       }
-      return Math.ceil((100 / numberOfUnits) * doneCounter);
+      return Math.ceil((100 / numOfUnits) * doneCounter);
     }
 
-    function setUserLevel(units: any, numberOfUnits: number) {
+    function setUserLevel(units: any, numOfUnits: number) {
+      let level = getUserLevel(units, numOfUnits);
+      if (level <= 0) return;
       let uid = auth.currentUser?.uid as string;
       let userDocRef = doc($db, "users", uid);
       updateDoc(userDocRef, {
-        userLevel: getUserLevel(units, numberOfUnits),
+        userLevel: level,
       });
       fetchUserInfo(uid);
     }

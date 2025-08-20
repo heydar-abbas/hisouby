@@ -120,6 +120,7 @@
 		title: "الثالث الابتدائية | الحيسوبي",
 	});
 
-	const { $userStore } = useNuxtApp();
+	const { $userStore, $quizStore } = useNuxtApp();
+	$quizStore.NUMBER_OF_UNITS = 9;
 	const grades = computed(() => $userStore?.userInfo?.grades);
 </script>

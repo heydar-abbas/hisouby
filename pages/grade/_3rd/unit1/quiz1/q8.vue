@@ -66,25 +66,51 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	layout: "quiz",
-});
+	definePageMeta({
+		layout: "quiz",
+	});
 
-useHead({
-	title: "الثالث الابتدائية - الفصل الأول",
-});
+	useHead({
+		title: "الثالث الابتدائية - الفصل الأول",
+	});
 
-const { $userStore, $quizStore } = useNuxtApp();
-const { userInfo } = storeToRefs($userStore);
-const { skipPopup, popup, quiz } = storeToRefs($quizStore);
-const units = ref(userInfo.value?.grades?.g3);
-const quizes = ref(userInfo.value?.grades?.g3?.unit1);
-const answer = ref<number>(0);
+	const { $userStore, $quizStore } = useNuxtApp();
+	const { userInfo } = storeToRefs($userStore);
+	const { skipPopup, popup, quiz, NUMBER_OF_UNITS } = storeToRefs($quizStore);
+	const units = ref(userInfo.value?.grades?.g3);
+	const quizes = ref(userInfo.value?.grades?.g3?.unit1);
+	const answer = ref<number>(0);
 
-function check(): void {
-	if (answer.value === 400) {
-		$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q1", true);
-		quiz.value.q8 = 1;
+	function check(): void {
+		if (answer.value === 400) {
+			$quizStore.setPopup("احسنت", true, "/grade/_3rd/unit1/quiz2/q1", true);
+			quiz.value.q8 = 1;
+			if (userInfo.value) {
+				quizes.value.quiz1 = $quizStore.getDegree();
+				$quizStore.setDegreesCounter(units.value);
+				$quizStore.updateQuiz({
+					g3: {
+						...units.value,
+						unit1: {
+							...quizes.value,
+						},
+					},
+				});
+				$userStore.setUserLevel(units.value, NUMBER_OF_UNITS.value);
+			}
+		} else {
+			quiz.value.q8 = -1;
+			$quizStore.setPopup("حاول مرة اخرى", false, "", true);
+		}
+	}
+
+	function handleSkip(): void {
+		popup.value.open = false;
+		$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q1", true);
+	}
+
+	function skipQuestion(): void {
+		quiz.value.q8 = -1;
 		if (userInfo.value) {
 			quizes.value.quiz1 = $quizStore.getDegree();
 			$quizStore.setDegreesCounter(units.value);
@@ -96,36 +122,12 @@ function check(): void {
 					},
 				},
 			});
+			$userStore.setUserLevel(units.value, 9);
 		}
-	} else {
-		quiz.value.q8 = -1;
-		$quizStore.setPopup("حاول مرة اخرى", false, "", true);
 	}
-}
 
-function handleSkip(): void {
-	popup.value.open = false;
-	$quizStore.setSkipPopup("/grade/_3rd/unit1/quiz2/q1", true);
-}
-
-function skipQuestion(): void {
-	quiz.value.q8 = -1;
-	if (userInfo.value) {
-		quizes.value.quiz1 = $quizStore.getDegree();
-		$quizStore.setDegreesCounter(units.value);
-		$quizStore.updateQuiz({
-			g3: {
-				...units.value,
-				unit1: {
-					...quizes.value,
-				},
-			},
-		});
-	}
-}
-
-onUnmounted(() => {
-	popup.value.open = false;
-	skipPopup.value.open = false;
-});
+	onUnmounted(() => {
+		popup.value.open = false;
+		skipPopup.value.open = false;
+	});
 </script>
