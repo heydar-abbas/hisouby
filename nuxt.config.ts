@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: "static",
   },
+  ssr: true,
   modules: ["@pinia/nuxt", "pinia-plugin-persistedstate/nuxt"],
   plugins: [],
   vite: { plugins: [tailwindcss()] },
