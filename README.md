@@ -1,75 +1,34 @@
-# Nuxt Minimal Starter
+<h1 style="text-align:center;font-size:3rem">
+  Hisouby ( الحيسوبي )
+  <br />
+  <a 
+    href="https://hisouby.web.app" 
+    target="_blank"
+    style="font-size:1.5rem"
+  >
+    https://hisouby.web.app
+  </a>
+</h1>
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<div style="width:100%;display:flex;justify-content:center;margin-bottom:1rem">
+  <figure style="width:400px">
+    <img alt="Hisouby" src="./public/images/hisouby_thumb.png" />
+  </figure>
+</div>
 
-## Setup
+### Our comprehensive math web application is designed to guide students on their entire math journey. From foundational Primary School arithmetic to complex High School algebra and calculus.
 
-Make sure to install dependencies:
+### Built With
 
-```bash
-# npm
-npm install
+---
 
-# pnpm
-pnpm install
+This project was built using these technologies.
 
-# yarn
-yarn install
+- Nuxt.js ( SSR )
+- TailwindCSS
+- Pinia
+- Vite
 
-# bun
-bun install
-```
+## Show your support
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Give a ⭐ if you like this website!
