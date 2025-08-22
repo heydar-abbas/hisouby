@@ -1,77 +1,81 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الرابع"
-			question="السؤال الخامس"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الرابع"
+				question="السؤال الخامس"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent question="اكتب العدد بجدول القيمة المكانية:">
-			<div class="grid sm:grid-cols-2 gap-4 md:w-xl mx-auto">
-				<div class="flex items-center justify-center sm:p-4">
-					<p class="text-4xl underline">١٩٨٩</p>
+			<!-- Question Content -->
+			<QuizQuestionContent question="اكتب العدد بجدول القيمة المكانية:">
+				<div class="grid sm:grid-cols-2 gap-4 md:w-xl mx-auto">
+					<div class="flex items-center justify-center sm:p-4">
+						<p class="text-4xl underline">١٩٨٩</p>
+					</div>
+
+					<div class="w-full flex justify-center p-4">
+						<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
+							<tr>
+								<td class="border-1 border-gray-400">
+									<UiTextInput
+										class="w-full p-2 border-none focus:outline-0"
+										v-model="ones"
+									/>
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput
+										class="w-full p-2 border-none focus:outline-0"
+										v-model="tens"
+									/>
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput
+										class="w-full p-2 border-none focus:outline-0"
+										v-model="hundreds"
+									/>
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput
+										class="w-full p-2 border-none focus:outline-0"
+										v-model="thousands"
+									/>
+								</td>
+							</tr>
+						</QuizTable>
+					</div>
 				</div>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-				<div class="w-full flex justify-center p-4">
-					<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
-						<tr>
-							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="ones"
-								/>
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="tens"
-								/>
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="hundreds"
-								/>
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput
-									class="w-full p-2 border-none focus:outline-0"
-									v-model="thousands"
-								/>
-							</td>
-						</tr>
-					</QuizTable>
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+				<!-- /Actions -->
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
-
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

@@ -1,60 +1,64 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس السادس"
-			question="السؤال السادس"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس السادس"
+				question="السؤال السادس"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent question="أرتب الأعداد من الأكبر الى الأصغر:">
-			<div class="sm:w-md mx-auto">
-				<div class="py-4 text-gray-500 text-sm">الأكبر</div>
-				<Draggable
-					v-model="items"
-					item-key="id"
-					@start="listAnswer = []"
-					@end="fillListAnswer($event)"
-					class="flex flex-col text-center gap-4"
-				>
-					<template #item="{ element }">
-						<UiDraggableItem>
-							{{ element.number }}
-						</UiDraggableItem>
-					</template>
-				</Draggable>
-				<div class="py-4 text-gray-500 text-sm">الأصغر</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+			<!-- Question Content -->
+			<QuizQuestionContent question="أرتب الأعداد من الأكبر الى الأصغر:">
+				<div class="sm:w-md mx-auto">
+					<div class="py-4 text-gray-500 text-sm">الأكبر</div>
+					<Draggable
+						v-model="items"
+						item-key="id"
+						@start="listAnswer = []"
+						@end="fillListAnswer($event)"
+						class="flex flex-col text-center gap-4"
+					>
+						<template #item="{ element }">
+							<UiDraggableItem>
+								{{ element.number }}
+							</UiDraggableItem>
+						</template>
+					</Draggable>
+					<div class="py-4 text-gray-500 text-sm">الأصغر</div>
+				</div>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	import Draggable from "vuedraggable";
 
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 	useHead({
 		title: "الثالث الابتدائية - الفصل الأول",

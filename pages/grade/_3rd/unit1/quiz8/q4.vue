@@ -1,93 +1,97 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثامن"
-			question="السؤال الرابع"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثامن"
+				question="السؤال الرابع"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="بلغ عدد مشاهدي فضائية العراق التربوية لمادة الرياضيات ٥٧٦٣ مشاهداً ومادة اللغة الانكليزية ٥٧٣٦ مشاهداً, أيهما أكثر مشاهدةً؟"
-		>
-			<div class="w-full grid sm:grid-cols-2 gap-4 md:p-4 lg:w-2xl mx-auto">
-				<div class="w-full">
-					<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
-						<tr>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-						</tr>
-						<tr>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-							<td class="border-1 border-gray-400">
-								<UiTextInput class="w-full border-none focus:outline-0" />
-							</td>
-						</tr>
-					</QuizTable>
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="بلغ عدد مشاهدي فضائية العراق التربوية لمادة الرياضيات ٥٧٦٣ مشاهداً ومادة اللغة الانكليزية ٥٧٣٦ مشاهداً, أيهما أكثر مشاهدةً؟"
+			>
+				<div class="w-full grid sm:grid-cols-2 gap-4 md:p-4 lg:w-2xl mx-auto">
+					<div class="w-full">
+						<QuizTable :tHeads="['احاد', 'عشرات', 'مئات', 'الوف']">
+							<tr>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+							</tr>
+							<tr>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+								<td class="border-1 border-gray-400">
+									<UiTextInput class="w-full border-none focus:outline-0" />
+								</td>
+							</tr>
+						</QuizTable>
+					</div>
+					<QuizMultipleChoiseCard>
+						<UiInputRadio
+							@click="answer = 'الرياضيات'"
+							forId="answer1"
+							name="answer"
+							title="الرياضيات"
+							:hidden="true"
+						/>
+						<UiInputRadio
+							@click="answer = 'اللغة الانكليزية'"
+							forId="answer2"
+							name="answer"
+							title="اللغة الانكليزية"
+							:hidden="true"
+						/>
+					</QuizMultipleChoiseCard>
 				</div>
-				<QuizMultipleChoiseCard>
-					<UiInputRadio
-						@click="answer = 'الرياضيات'"
-						forId="answer1"
-						name="answer"
-						title="الرياضيات"
-						:hidden="true"
-					/>
-					<UiInputRadio
-						@click="answer = 'اللغة الانكليزية'"
-						forId="answer2"
-						name="answer"
-						title="اللغة الانكليزية"
-						:hidden="true"
-					/>
-				</QuizMultipleChoiseCard>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

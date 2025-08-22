@@ -1,56 +1,60 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الرابع"
-			question="السؤال الأول"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الرابع"
+				question="السؤال الأول"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent question="اكتب العدد بالأرقام:">
-			<div class="grid sm:grid-cols-3 gap-4 sm:w-lg mx-auto">
-				<div class="col-span-2 flex items-center justify-center sm:p-4">
-					<p class="text-sm md:text-base font-semibold">
-						خمسة الاف وأربعمئة وثمانية
-					</p>
+			<!-- Question Content -->
+			<QuizQuestionContent question="اكتب العدد بالأرقام:">
+				<div class="grid sm:grid-cols-3 gap-4 sm:w-lg mx-auto">
+					<div class="col-span-2 flex items-center justify-center sm:p-4">
+						<p class="text-sm md:text-base font-semibold">
+							خمسة الاف وأربعمئة وثمانية
+						</p>
+					</div>
+
+					<div class="flex justify-center p-4">
+						<UiDotedInput
+							v-model="digits"
+							class="w-1/2 sm:w-full"
+							placeholder="العدد بالأرقام"
+						/>
+					</div>
 				</div>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-				<div class="flex justify-center p-4">
-					<UiDotedInput
-						v-model="digits"
-						class="w-1/2 sm:w-full"
-						placeholder="العدد بالأرقام"
-					/>
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+				<!-- /Actions -->
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
-
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

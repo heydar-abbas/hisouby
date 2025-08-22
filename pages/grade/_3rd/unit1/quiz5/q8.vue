@@ -1,49 +1,61 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الرابع"
-			question="السؤال الثامن"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الخامس"
+				question="السؤال الثامن"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="أكتب عدداً أكبر من ٤٦٨٢ وعدداً اخر أصغر منه."
-		>
-			<div class="md:w-xl mx-auto">
-				<div class="w-full flex justify-center gap-6 p-4">
-					<UiDotedInput v-model="gt" class="w-28" placeholder="العدد الأكبر" />
-					<UiDotedInput v-model="lt" class="w-28" placeholder="العدد الأصغر" />
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="أكتب عدداً أكبر من ٤٦٨٢ وعدداً اخر أصغر منه."
+			>
+				<div class="md:w-xl mx-auto">
+					<div class="w-full flex justify-center gap-6 p-4">
+						<UiDotedInput
+							v-model="gt"
+							class="w-28"
+							placeholder="العدد الأكبر"
+						/>
+						<UiDotedInput
+							v-model="lt"
+							class="w-28"
+							placeholder="العدد الأصغر"
+						/>
+					</div>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({
@@ -91,7 +103,7 @@
 			}
 		} else {
 			quiz.value.q8 = -1;
-			$quizStore.setPopup("حاول مرة اخرى", false, "");
+			$quizStore.setPopup("حاول مرة اخرى", false);
 		}
 	}
 

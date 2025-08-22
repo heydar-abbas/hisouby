@@ -1,61 +1,65 @@
 <template>
-	<QuizArticle>
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الخامس"
-			question="السؤال السابع"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس السادس"
+				question="السؤال السابع"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="ادخرت الاء ٦٥٠٠ ديناراً في الأسبوع الأول ٥٥٠٠ في الأسبوع الثاني ٤٠٠٠ في الأسبوع الثالث. أرتب مدخرات الاء من الأصغر الى الأكبر."
-		>
-			<div class="md:w-xl mx-auto">
-				<div class="w-full flex justify-center items-center gap-4 p-4">
-					<UiDotedInput
-						v-model="num1"
-						class="w-16 sm:w-20 border-b-rose-500 text-rose-500"
-					/>
-					<div class="flex items-center text-xl">&lt;</div>
-					<UiDotedInput
-						v-model="num2"
-						class="w-16 sm:w-20 border-b-lime-500 text-lime-500"
-					/>
-					<div class="flex items-center text-xl">&lt;</div>
-					<UiDotedInput
-						v-model="num3"
-						class="w-16 sm:w-20 border-b-blue-500 text-sky-500"
-					/>
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="ادخرت الاء ٦٥٠٠ ديناراً في الأسبوع الأول ٥٥٠٠ في الأسبوع الثاني ٤٠٠٠ في الأسبوع الثالث. أرتب مدخرات الاء من الأصغر الى الأكبر."
+			>
+				<div class="md:w-xl mx-auto">
+					<div class="w-full flex justify-center items-center gap-4 p-4">
+						<UiDotedInput
+							v-model="num1"
+							class="w-16 sm:w-20 border-b-rose-500 text-rose-500"
+						/>
+						<div class="flex items-center text-xl">&lt;</div>
+						<UiDotedInput
+							v-model="num2"
+							class="w-16 sm:w-20 border-b-lime-500 text-lime-500"
+						/>
+						<div class="flex items-center text-xl">&lt;</div>
+						<UiDotedInput
+							v-model="num3"
+							class="w-16 sm:w-20 border-b-blue-500 text-sky-500"
+						/>
+					</div>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</QuizArticle>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

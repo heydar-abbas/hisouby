@@ -1,71 +1,75 @@
 <template>
-	<article class="md:h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثالث"
-			question="السؤال السابع"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثالث"
+				question="السؤال السابع"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent question="_ ما القيمة المكانية للرقم ٤ في العدد ٤٣٢١؟">
-			<QuizMultipleChoiseCard>
-				<UiInputRadio
-					@click="answer = 4"
-					forId="answer1"
-					name="answer"
-					title="٤"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 40"
-					forId="answer2"
-					name="answer"
-					title="٤٠"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 400"
-					forId="answer3"
-					name="answer"
-					title="٤٠٠"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 4000"
-					forId="answer4"
-					name="answer"
-					title="٤٠٠٠"
-					:hidden="true"
-				/>
-			</QuizMultipleChoiseCard>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</article>
+			<!-- Question Content -->
+			<QuizQuestionContent question="ما القيمة المكانية للرقم ٤ في العدد ٤٣٢١؟">
+				<QuizMultipleChoiseCard>
+					<UiInputRadio
+						@click="answer = 4"
+						forId="answer1"
+						name="answer"
+						title="٤"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 40"
+						forId="answer2"
+						name="answer"
+						title="٤٠"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 400"
+						forId="answer3"
+						name="answer"
+						title="٤٠٠"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 4000"
+						forId="answer4"
+						name="answer"
+						title="٤٠٠٠"
+						:hidden="true"
+					/>
+				</QuizMultipleChoiseCard>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

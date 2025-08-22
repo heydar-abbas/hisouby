@@ -1,83 +1,87 @@
 <template>
-	<article class="md:h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثاني"
-			question="السؤال الأول"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثاني"
+				question="السؤال الأول"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="_ أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:"
-		>
-			<div>
-				<div class="md:flex md:flex-row w-full mx-auto mb-6">
-					<div
-						v-for="(pv, index) in placeValue"
-						:key="index"
-						class="flex basis-1/4 md:flex-col mb-4"
-					>
-						<div class="w-full flex flex-col justify-center basis-1/2">
-							<h3
-								class="text-center text-gray-500 text-sm font-semibold"
-								v-text="pv.imgAlt"
-							></h3>
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="أملأ جدول القيمة المكانية ثم أكتب العدد الذي يمثله النموذج:"
+			>
+				<div>
+					<div class="md:flex md:flex-row w-full mx-auto mb-6">
+						<div
+							v-for="(pv, index) in placeValue"
+							:key="index"
+							class="flex basis-1/4 md:flex-col mb-4"
+						>
+							<div class="w-full flex flex-col justify-center basis-1/2">
+								<h3
+									class="text-center text-gray-500 text-sm font-semibold"
+									v-text="pv.imgAlt"
+								></h3>
+								<div
+									class="flex justify-center items-end md:items-center h-24 gap-2 p-4"
+								>
+									<QuizGuideImg
+										v-for="(th, index) in pv.repeatImg"
+										:key="index"
+										:imgSrc="pv.imgSrc"
+										:imgAlt="pv.imgAlt"
+										:class="pv.width"
+									/>
+								</div>
+							</div>
 							<div
-								class="flex justify-center items-end md:items-center h-24 gap-2 p-4"
+								class="basis-1/2 flex flex-col justify-end items-center py-4 md:py-0"
 							>
-								<QuizGuideImg
-									v-for="(th, index) in pv.repeatImg"
-									:key="index"
-									:imgSrc="pv.imgSrc"
-									:imgAlt="pv.imgAlt"
-									:class="pv.width"
-								/>
+								<UiDotedInput v-model="pv.value" class="w-16" />
 							</div>
 						</div>
-						<div
-							class="basis-1/2 flex flex-col justify-end items-center py-4 md:py-0"
-						>
-							<UiDotedInput v-model="pv.value" class="w-16" />
+					</div>
+					<div
+						class="flex items-center justify-around md:justify-center md:gap-6 py-4 border rounded-4xl border-gray-500 md:w-[50%] md:mx-auto"
+					>
+						<p class="flex items-end h-8 text-center">العدد:</p>
+						<div class="text-center">
+							<UiDotedInput v-model="theNumber" class="w-16" />
 						</div>
 					</div>
 				</div>
-				<div
-					class="flex items-center justify-around md:justify-center md:gap-6 py-4 border rounded-4xl border-gray-500 md:w-[50%] md:mx-auto"
-				>
-					<p class="flex items-end h-8 text-center">العدد:</p>
-					<div class="text-center">
-						<UiDotedInput v-model="theNumber" class="w-16" />
-					</div>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
+
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</article>
+				<!-- /Actions -->
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
-
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

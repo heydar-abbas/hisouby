@@ -1,51 +1,57 @@
 <template>
-	<article class="min-h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثالث"
-			question="السؤال السادس"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثالث"
+				question="السؤال السادس"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent question="_ اكتب العدد بالأرقام من الصورة التحليلية:">
-			<div class="flex flex-col sm:flex-row gap-4 w-xs sm:w-md md:w-lg mx-auto">
-				<div class="flex items-center justify-center p-4 text-2xl">
-					<p>١ + ٥٠ + ٩٠٠ + ٦٠٠٠</p>
+			<!-- Question Content -->
+			<QuizQuestionContent question="اكتب العدد بالأرقام من الصورة التحليلية:">
+				<div
+					class="flex flex-col sm:flex-row gap-4 w-xs sm:w-md md:w-lg mx-auto"
+				>
+					<div class="flex items-center justify-center p-4 text-2xl">
+						<p>١ + ٥٠ + ٩٠٠ + ٦٠٠٠</p>
+					</div>
+
+					<div class="flex items-center justify-center gap-4 p-4">
+						<span> = </span>
+						<UiDotedInput v-model="answer" class="w-24" />
+					</div>
 				</div>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-				<div class="flex items-center justify-center gap-4 p-4">
-					<span> = </span>
-					<UiDotedInput v-model="answer" class="w-24" />
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</article>
+				<!-- /Actions -->
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
-
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

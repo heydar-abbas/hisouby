@@ -1,66 +1,70 @@
 <template>
-	<article class="min-h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثالث"
-			question="السؤال الأول"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثالث"
+				question="السؤال الأول"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="_ اكتب اسم مرتبة الرقم الذي تحته خط ثم احدد قيمة المكانية:"
-		>
-			<div class="grid sm:grid-cols-2 gap-4 w-xs sm:w-md mx-auto">
-				<div class="flex items-center justify-center p-4 text-4xl">
-					<p>٩٨٣<span class="text-rose-500 underline">٠</span></p>
-				</div>
-
-				<div class="grid grid-cols-2 sm:grid-cols-1 p-4">
-					<div class="p-4">
-						<UiDotedInput
-							v-model="placeValue"
-							class="w-full"
-							placeholder="المرتبة"
-						/>
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="اكتب اسم مرتبة الرقم الذي تحته خط ثم احدد قيمة المكانية:"
+			>
+				<div class="grid sm:grid-cols-2 gap-4 w-xs sm:w-md mx-auto">
+					<div class="flex items-center justify-center p-4 text-4xl">
+						<p>٩٨٣<span class="text-rose-500 underline">٠</span></p>
 					</div>
 
-					<div class="p-4">
-						<UiDotedInput
-							v-model="digitPlace"
-							class="w-full"
-							placeholder="القيمة"
-						/>
+					<div class="grid grid-cols-2 sm:grid-cols-1 p-4">
+						<div class="p-4">
+							<UiDotedInput
+								v-model="placeValue"
+								class="w-full"
+								placeholder="المرتبة"
+							/>
+						</div>
+
+						<div class="p-4">
+							<UiDotedInput
+								v-model="digitPlace"
+								class="w-full"
+								placeholder="القيمة"
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</article>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handelSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({

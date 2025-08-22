@@ -1,73 +1,77 @@
 <template>
-	<article class="md:h-screen w-full md:w-2xl lg:w-4xl xl:w-6xl mx-auto">
-		<!-- Bread crump -->
-		<QuizBreadCrumb
-			unit="الفصل الأول"
-			quize="الدرس الثاني"
-			question="السؤال الثامن"
-			href="/grade/_3rd"
-		/>
-		<!-- /Bread crump -->
+	<NuxtLayout name="quiz">
+		<template #quiz_article>
+			<!-- Bread crump -->
+			<QuizBreadCrumb
+				unit="الفصل الأول"
+				quize="الدرس الثاني"
+				question="السؤال الثامن"
+				href="/grade/_3rd"
+			/>
+			<!-- /Bread crump -->
 
-		<!-- Question Content -->
-		<QuizQuestionContent
-			question="_ مع زينب ٥ مئات + ٤ الاف, كم ديناراً مع زينب?"
-		>
-			<QuizMultipleChoiseCard>
-				<UiInputRadio
-					@click="answer = 4000"
-					forId="answer1"
-					name="answer"
-					title="٤٠٠٠ دينار"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 5400"
-					forId="answer2"
-					name="answer"
-					title="٥٤٠٠ دينار"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 4500"
-					forId="answer3"
-					name="answer"
-					title="٤٥٠٠ دينار"
-					:hidden="true"
-				/>
-				<UiInputRadio
-					@click="answer = 45"
-					forId="answer4"
-					name="answer"
-					title="٤٥ دينار"
-					:hidden="true"
-				/>
-			</QuizMultipleChoiseCard>
-		</QuizQuestionContent>
-		<!-- /Question Content -->
-	</article>
+			<!-- Question Content -->
+			<QuizQuestionContent
+				question="مع زينب ٥ مئات + ٤ الاف, كم ديناراً مع زينب?"
+			>
+				<QuizMultipleChoiseCard>
+					<UiInputRadio
+						@click="answer = 4000"
+						forId="answer1"
+						name="answer"
+						title="٤٠٠٠ دينار"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 5400"
+						forId="answer2"
+						name="answer"
+						title="٥٤٠٠ دينار"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 4500"
+						forId="answer3"
+						name="answer"
+						title="٤٥٠٠ دينار"
+						:hidden="true"
+					/>
+					<UiInputRadio
+						@click="answer = 45"
+						forId="answer4"
+						name="answer"
+						title="٤٥ دينار"
+						:hidden="true"
+					/>
+				</QuizMultipleChoiseCard>
+			</QuizQuestionContent>
+			<!-- /Question Content -->
+		</template>
 
-	<!-- Quize footer -->
-	<QuizFooter
-		class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
-	>
-		<!-- Actions -->
-		<div class="flex items-center gap-2">
-			<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
-			<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
-		</div>
-		<!-- /Actions -->
+		<!-- Quize footer -->
+		<template #quiz_footer>
+			<QuizFooter
+				class="sticky bottom-0 w-full h-24 p-4 flex justify-between gap-2 border-t-1 border-gray-400"
+			>
+				<!-- Actions -->
+				<div class="flex items-center gap-2">
+					<UiPrimaryButton @click="check">النتيجة</UiPrimaryButton>
+					<UiSecondaryButton @click="handleSkip"> مرر </UiSecondaryButton>
+				</div>
+				<!-- /Actions -->
 
-		<QuizIndicator :quiz="quiz" />
-		<QuizPopup :popup="popup" />
-		<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
-	</QuizFooter>
-	<!-- /Quize footer -->
+				<QuizIndicator :quiz="quiz" />
+				<QuizPopup :popup="popup" />
+				<QuizSkipPopup :skipPopup="skipPopup" @skipQuestion="skipQuestion" />
+			</QuizFooter>
+		</template>
+		<!-- /Quize footer -->
+	</NuxtLayout>
 </template>
 
 <script setup lang="ts">
 	definePageMeta({
-		layout: "quiz",
+		layout: false,
 	});
 
 	useHead({
